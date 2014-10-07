@@ -10,7 +10,7 @@ Development
 -----------
 This website is built using grunt, node.js and bower package manager. Ensure that you have all these installed on your development environment.
 
-* Fork this project and clone to your box. 
+* Fork this project and clone to your development box
 * Run 'npm install'
 * Run 'bower install'
 * Run 'grunt' to see if all the tests pass
