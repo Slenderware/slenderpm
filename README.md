@@ -13,7 +13,7 @@ This website is built using grunt, node.js and bower package manager. Ensure tha
 * Fork this project and clone to your box. 
 * Run 'npm install'
 * Run 'bower install'
-* Run 'grunt' to see if all the tests pass'
+* Run 'grunt' to see if all the tests pass
 * Run 'grunt serve' to launch the site
 
 License
