@@ -17,6 +17,8 @@ angular.module('slenderpmApp')
       {name:'Timeline', icon:'line-chart', selected: false}
     ];
 
+    $scope.currMenuItem = $scope.menuItems[0];
+
     $scope.user = { username: 'Jannik Richter' };
 
     $scope.toggle = function(name) {    	
@@ -27,7 +29,8 @@ angular.module('slenderpmApp')
 	    		$scope.menuItems[i].selected = false;
 	    	}
 	    	else{
-				$scope.menuItems[i].selected = true;
+				  $scope.menuItems[i].selected = true;
+          $scope.currMenuItem = $scope.menuItems[i];
 			}			
 		}
   	};

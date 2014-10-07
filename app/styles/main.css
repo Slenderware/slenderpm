@@ -9,3 +9,44 @@ body {
   height: 100%;
 }
 
+/*Custom Navbar*/
+.navbar.custom{
+	background:#3498db;
+	border-bottom:0px;
+}
+
+.navbar.custom .container{
+	width:100%;
+}
+
+.navbar.custom .container .logothumb{
+	float:left;
+	width:150px;
+	padding-top:0.4em;
+	padding-bottom:0.3em;
+	margin-right:6em;
+}
+
+.navbar.custom .container i{
+	padding:1em;		
+}
+
+
+/*Top menu - menu that is fixed to the top of parent*/
+.topmenu{
+	overflow:hidden;
+	background:#34495e;
+	margin-top:50px;		
+}
+
+/*Content area*/
+.content{
+	float:left;	
+  	height: 100%;
+}
+
+.breadcrumb {	
+	float:left;
+	padding: 10px 10px 5px 1em;		
+	background-color: transparent;	
+}
