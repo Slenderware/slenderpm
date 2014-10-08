@@ -43,10 +43,36 @@ body {
 .content{
 	float:left;	
   	height: 100%;
+  	width: 100%;
 }
 
 .breadcrumb {	
 	float:left;
 	padding: 10px 10px 5px 1em;		
 	background-color: transparent;	
+}
+
+/* Mobile screens */
+@media only screen and (max-width: 480px) { 
+	.slenmenu{		
+		margin-top:7.1em !important;			
+	}
+
+	.navbar.custom .container{
+		height:7.1em;
+	}
+	.navbar.custom .container i{
+		float:right;		
+	}
+
+	.navbar.custom .container .logothumb{		
+		margin-right:0em;
+	}
+}
+
+@media only screen and (max-width: 344px) { 
+	
+	.navbar.custom .container .logothumb{		
+		margin-right:10em;
+	}
 }

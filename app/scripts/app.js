@@ -18,14 +18,23 @@ angular
     'ngTouch'
   ])
   .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+    $routeProvider     
+      .when('/Tasks', {
+        templateUrl: 'views/tasks.html',
+        controller: 'TasksCtrl'
+      })    
+     
+      .when('/Gantt', {
+        templateUrl: 'views/gantt.html',
+        controller: 'GanttCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/Comments', {
+        templateUrl: 'views/comments.html',
+        controller: 'CommentsCtrl'
+      })
+      .when('/Resources', {
+        templateUrl: 'views/resources.html',
+        controller: 'ResourcesCtrl'
       })
       .otherwise({
         redirectTo: '/'

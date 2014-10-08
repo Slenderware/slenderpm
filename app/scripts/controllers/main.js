@@ -10,11 +10,10 @@
 angular.module('slenderpmApp')
   .controller('MainCtrl', function ($scope) {
     $scope.menuItems = [
-      {name:'Dashboard', icon:'desktop', selected: true},
-      {name:'Project', icon:'gear', selected: false},
-      {name:'Tasks', icon:'tasks', selected: false},
-      {name:'Messaging', icon:'comments-o', selected: false},
-      {name:'Timeline', icon:'line-chart', selected: false}
+      {name:'Tasks', icon:'tasks', selected: true},
+      {name:'Gantt', icon:'area-chart', selected: false},
+      {name:'Comments', icon:'comments-o', selected: false},
+      {name:'Resources', icon:'group', selected: false}
     ];
 
     $scope.currMenuItem = $scope.menuItems[0];
@@ -30,7 +29,7 @@ angular.module('slenderpmApp')
 	    	}
 	    	else{
 				  $scope.menuItems[i].selected = true;
-          $scope.currMenuItem = $scope.menuItems[i];
+          $scope.currMenuItem = $scope.menuItems[i];          
 			}			
 		}
   	};

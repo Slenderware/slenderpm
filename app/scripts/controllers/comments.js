@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name slenderpmApp.controller:AboutCtrl
+ * @name slenderpmApp.controller:CommentsCtrl
  * @description
- * # AboutCtrl
+ * # CommentsCtrl
  * Controller of the slenderpmApp
  */
 angular.module('slenderpmApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('CommentsCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

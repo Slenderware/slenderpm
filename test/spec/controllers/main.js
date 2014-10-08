@@ -17,6 +17,22 @@ describe('Controller: MainCtrl', function () {
   }));
 
   it('should attach a list of menuItem to the scope', function () {
-    expect(scope.menuItems.length).toBe(5);
+    expect(scope.menuItems.length).toBe(4);
+  });
+
+  it('Item 1 should have name Tasks', function () {
+    expect(scope.menuItems[0].name).toBe('Tasks');
+  });
+
+  it('Item 2 should have name Tasks', function () {
+    expect(scope.menuItems[1].name).toBe('Gantt');
+  });
+
+  it('Item 3 should have name Tasks', function () {
+    expect(scope.menuItems[2].name).toBe('Comments');
+  });
+
+  it('Item 4 should have name Tasks', function () {
+    expect(scope.menuItems[3].name).toBe('Resources');
   });
 });
