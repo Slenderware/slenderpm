@@ -16,9 +16,10 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pace.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="slenderpmApp" ng-controller="MainCtrl">  
+  <body ng-app="slenderpmApp" ng-controller="MainCtrl" ng-cloak>  
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -28,7 +29,14 @@
             <img class="logothumb" logo src='images/logo.png'></img>
             <a id="selector"><i class="fa fa-navicon fa-lg"></i></a>
             <a><i class="fa fa-bell-o fa-lg" ></i></a>
-            <a style="float:right;"><i class="fa fa-cog fa-lg" ></i></a>
+           
+            <div class="btn-group" style="float:right;margin:1em;">
+                 <a data-toggle="dropdown"<i class="fa fa-cog fa-lg" ></i></a>    
+              <ul class="dropdown-menu" role="menu" style="left:-10em;top: 170%;">                
+                <li class="divider"></li>
+                <li><a href="#/Login" ng-click='changeUserState(0)'>Logout</a></li>
+              </ul>
+            </div>
           </div>
         </nav>
 
@@ -90,6 +98,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/slendermenu/dist/js/jquery.slendermenu.js"></script>
     <script src="bower_components/slender-ui/dist/js/jquery.slender-ui.js"></script>
+    <script src="bower_components/pace/pace.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
