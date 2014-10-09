@@ -16,7 +16,14 @@ angular.module('slenderpmApp')
       {name:'Resources', icon:'group', selected: false}
     ];
 
+    $scope.userState = [
+      {name:'Unsecure', active: true},
+      {name:'SecureProj', active: false},
+      {name:'SecureTask', active: false}
+    ];
+
     $scope.currMenuItem = $scope.menuItems[0];
+    $scope.currUserState = $scope.userState[0];
 
     $scope.user = { username: 'Jannik Richter' };
 
@@ -33,5 +40,19 @@ angular.module('slenderpmApp')
 			}			
 		}
   	};
+
+    $scope.changeUserState = function(value) {     
+        for(var i = 0 ; i < $scope.userState.length; i++){
+            if(i===value)
+            {
+              $scope.userState[i].active = true;
+              $scope.currUserState = $scope.userState[i];
+            }
+            else
+            {
+              $scope.userState[i].active = false;
+            }
+        }    
+    };
 
   });

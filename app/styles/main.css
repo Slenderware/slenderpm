@@ -52,7 +52,79 @@ body {
 	background-color: transparent;	
 }
 
+#secureContent{
+	width:100%;
+	height:100%;
+}
+
+/* User States */
+
+.Unsecure{
+	display:block;
+	background: #34495e;
+}
+
+.Unsecure .navbar{
+	margin-top: -5em;
+}
+
+.Unsecure .topmenu{
+	margin-top: -5em;
+}
+
+.SecureProj .topmenu{
+	margin-top: 0em;
+}
+
+.SecureProj #loginBox{
+	display:none;
+}
+
+.SecureTask #loginBox{
+	display:none;
+}
+
+
+#unsecureContent #loginBox{
+	width:100%;	
+	background:#ecf0f1;
+
+	-webkit-box-shadow: 0px 0px 19px 0px rgba(50, 50, 50, 0.86);
+	-moz-box-shadow:    0px 0px 19px 0px rgba(50, 50, 50, 0.86);
+	box-shadow:         0px 0px 19px 0px rgba(50, 50, 50, 0.86);
+}
+
 /* Mobile screens */
+
+/*SM*/
+@media only screen and (max-width: 991px) { 
+
+	.row.main{
+		margin-top:25%;		
+	}
+}
+
+
+/*XS*/
+@media only screen and (max-width: 767px) { 
+	#loginBox{
+		height:100% !important;
+	}
+
+	#loginContainer{
+		height:100% !important;
+	}
+
+	.container-fluid.main{
+		height:100%;
+	}
+
+	.row.main{
+		margin-top:0px !important;
+		height:100%;
+	}
+}
+
 @media only screen and (max-width: 480px) { 
 	.slenmenu{		
 		margin-top:7.1em !important;			
