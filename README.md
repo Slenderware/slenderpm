@@ -1,7 +1,7 @@
 SlenderPM
 =========
-https://travis-ci.org/Slenderware/slenderpm.png
-https://david-dm.org/slenderware/slenderpm.png
+![alt tag](https://travis-ci.org/Slenderware/slenderpm.png)
+![alt tag](https://david-dm.org/slenderware/slenderpm.png)
 
 Slenderware was created for the purpose of bridging the divide between the project and the customer. 
 Part of the Slenderware Management System is to track a project every step of the way. 
