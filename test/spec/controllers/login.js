@@ -14,9 +14,18 @@ describe('Controller: LoginCtrl', function () {
     LoginCtrl = $controller('LoginCtrl', {
       $scope: scope
     });
-  }));
+  })); 
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('loginModule username not initialiazed', function () {
+    expect(scope.loginModule.username).toBe('');
   });
+
+  it('loginModule password not initialiazed', function () {
+    expect(scope.loginModule.password).toBe('');
+  });
+
+  it('loginModule error not initialiazed', function () {
+    expect(scope.loginModule.error).toBe('');
+  });
+
 });
