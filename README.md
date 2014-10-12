@@ -2,6 +2,7 @@ SlenderPM
 =========
 ![alt tag](https://travis-ci.org/Slenderware/slenderpm.png)
 ![alt tag](https://david-dm.org/slenderware/slenderpm.png)
+[![devDependency Status](https://david-dm.org/slenderware/slenderpm/dev-status.svg)](https://david-dm.org/slenderware/slenderpm#info=devDependencies)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Slenderware/slenderpm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Slenderware was created for the purpose of bridging the divide between the project and the customer. 
