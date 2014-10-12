@@ -18,6 +18,7 @@ This website is built using grunt, node.js and bower package manager. Ensure tha
 * Run 'bower install'
 * Run 'grunt' to see if all the tests pass
 * Run 'grunt serve' to launch the site
+* Commit changes and create pull request
 
 License
 -------
