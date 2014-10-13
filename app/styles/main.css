@@ -31,10 +31,8 @@ body {
 	padding:1em;		
 }
 
-
 /*Top menu - menu that is fixed to the top of parent*/
-.topmenu{
-	overflow:hidden;
+.topmenu{	
 	background:#34495e;
 	margin-top:50px;		
 }
@@ -44,6 +42,7 @@ body {
 	float:left;	
   	height: 100%;
   	width: 100%;
+  	background:#2C3E50;
 }
 
 .breadcrumb {	
@@ -57,41 +56,8 @@ body {
 	height:100%;
 }
 
-/* User States */
-
-.Unsecure{
-	display:block;
-	background: #34495e;
-}
-
-.Unsecure .navbar{
-	margin-top: -5em;
-}
-
-.Unsecure .topmenu{
-	margin-top: -5em;
-}
-
-.SecureProj .topmenu{
-	margin-top: 0em;
-}
-
-.SecureProj #loginBox{
-	display:none;
-}
-
-.SecureTask #loginBox{
-	display:none;
-}
-
-
-#unsecureContent #loginBox{
+#loginBox{
 	width:100%;	
-	background:#ecf0f1;
-
-	-webkit-box-shadow: 0px 0px 19px 0px rgba(50, 50, 50, 0.86);
-	-moz-box-shadow:    0px 0px 19px 0px rgba(50, 50, 50, 0.86);
-	box-shadow:         0px 0px 19px 0px rgba(50, 50, 50, 0.86);
 }
 
 /* Mobile screens */
@@ -147,4 +113,11 @@ body {
 	.navbar.custom .container .logothumb{		
 		margin-right:10em;
 	}
+}
+
+/*TASK VIEW*/
+.taskView{
+	height:100%;
+	width:100%;
+	background:#fff;
 }

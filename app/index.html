@@ -19,50 +19,57 @@
     <link rel="stylesheet" href="styles/pace.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="slenderpmApp" ng-controller="MainCtrl" ng-cloak>  
+  <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-cloak>  
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="{{currUserState.name}}" style="width:100%;height:100%;">
+    <div style="width:100%;height:100%;" >
        <nav class="navbar navbar-default navbar-fixed-top custom" role="navigation">
           <div class="container">
             <img class="logothumb" logo src='images/logo.png'></img>
-            <a id="selector"><i class="fa fa-navicon fa-lg"></i></a>
-            <a><i class="fa fa-bell-o fa-lg" ></i></a>
-           
-            <div class="btn-group" style="float:right;margin:1em;">
+            <a id="selector"><i class="fa fa-navicon fa-lg" ng-show="showMenu()"></i></a>
+            
+           <div class="btn-group" ng-show="showMenu()"> 
+                 <a data-toggle="dropdown"<i class="fa fa-archive fa-lg" ></i></a>    
+              <ul class="dropdown-menu" role="menu">   
+                <li><a>Project 1</a></li>
+                <li><a>Project 2</a></li>
+                <li><a>Project 3</a></li>
+                <li><a>Project 4</a></li>
+              </ul>
+            </div>
+
+            <div class="btn-group" style="float:right;margin:1em;" ng-show="showMenu()"> 
                  <a data-toggle="dropdown"<i class="fa fa-cog fa-lg" ></i></a>    
               <ul class="dropdown-menu" role="menu" style="left:-10em;top: 170%;">                
                 <li class="divider"></li>
-                <li><a href="#/Login" ng-click='changeUserState(0)'>Logout</a></li>
+                <li><a href="#/Login" ng-click='logout()'>Logout</a></li>
               </ul>
             </div>
           </div>
         </nav>
 
         <div class="content">
-            <div ng-class="currUserState.name != 'SecureTask' ? 'slenmenu hidden' : 'slenmenu'" style="margin-top:50px;">
+            <div class="slenmenu" style="margin-top:50px;" ng-show="showMenu()">
                 <div style="overflow:hidden;cursor:pointer;background:#2c3e50;color:#ecf0f1;">
                     <img src='images/yeoman.png' style="float:left;"></img>
-                    <p style="float:left;margin-top:0.7em;">{{user.username}}</p>
+                    <p style="float:left;margin-top:0.7em;">Jannik Richter</p>
                 </div>
                 <ul style="clear:both;">            
-                    <li ng-repeat="menuItem in menuItems" ng-class="menuItem.selected ? 'active' : ''" ng-click='toggle(menuItem.name)'>
-                        <a href="#/{{menuItem.name}}" style="display:block; height:100%;width:100%;">
-                            <i class="fa fa-{{menuItem.icon}}"></i><span style="margin-left:1em;">{{menuItem.name}}</span>
-                        </a>
+                    <li ng-repeat="menuItem in menuItems" ng-class="menuItem.selected ? 'active' : ''" ng-click='toggle(menuItem.name)'>                      
+                        <i class="fa fa-{{menuItem.icon}}"></i><span style="margin-left:1em;">{{menuItem.name}}</span>                        
                     </li>            
                 </ul>
             </div>    
 
             <!-- Add your site or application content here -->  
-            <div class="topmenu">
+            <div class="topmenu" ng-show="showMenu()">
                 <ol class="breadcrumb">
                   <li><a href="#">Home</a></li>
                   <li class="active">{{currMenuItem.name}}</li>             
                 </ol>
             </div>  
-            <div ng-view=""></div>
+            <div ng-view="" style="height:100%;"></div>
         </div>
     </div>
     
@@ -109,13 +116,13 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/tasks.js"></script>
         <script src="scripts/controllers/gantt.js"></script>
         <script src="scripts/controllers/comments.js"></script>
         <script src="scripts/controllers/resources.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/projects.js"></script>
+        <script src="scripts/controllers/menu.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -15,7 +15,8 @@
     "slendermenu": "*",
     "slender-ui": "*",
     "font-awesome": "*",
-    "pace": "~1.0.1"
+    "pace": "~1.0.1",
+    "angular-treeview": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
