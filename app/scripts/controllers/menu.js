@@ -8,39 +8,87 @@
  * Controller of the slenderpmApp
  */
 angular.module('slenderpmApp')
-  .controller('MenuCtrl', function ($scope, $cookies, $location) {
-    $scope.menuItems = [
-      {name:'Tasks', icon:'tasks', selected: true},
-      {name:'Gantt', icon:'area-chart', selected: false},
-      {name:'Comments', icon:'comments-o', selected: false},
-      {name:'Resources', icon:'group', selected: false}
-    ];
 
-    $scope.currMenuItem = $scope.menuItems[0];
+  //Factory for MenuItemModule
+  .factory('MenuItemModule', function () {
+      
+       var MenuItemModule = function(name, icon, selected){
+        this.name = name;
+        this.icon = icon;
+        this.selected = selected;        
+      };
 
-     $scope.toggle = function(name){     	
-     	for (var i = 0; i < $scope.menuItems.length; i++)
-     	{
-     		if(name === $scope.menuItems[i].name ){
-  				$scope.menuItems[i].selected = true;
-  				$scope.currMenuItem = $scope.menuItems[i];          
-  				$location.path( $scope.currMenuItem.name );
-     		}
-     		else{
-     			$scope.menuItems[i].selected = false;
-     		}
-     	}
-     };
+      return MenuItemModule;
+  })
 
-     $scope.showMenu = function(){
-     	if($cookies.session === 'tasks'){
-     		return true;
-     	}
-     	return false;
-     };
+  //Service called MenuService
+  .service('MenuService', function($location, $rootScope, $cookies, MenuItemModule){
 
-     $scope.logout = function(){
-      delete $cookies.session;
-     };
+      //Initialize Login Module using a factory
+      this.InitMenuItems = function(){
+        var item1 = new MenuItemModule('Tasks', 'tasks', true);
+        var item2 = new MenuItemModule('Gantt', 'area-chart', false);
+        var item3 = new MenuItemModule('Comments', 'comments-o', false);
+        var item4 = new MenuItemModule('Resources', 'group', false);
+
+        var items = [];
+        items.push(item1);
+        items.push(item2);
+        items.push(item3);
+        items.push(item4);
+       
+        return items; 
+      };
+
+      this.CurrentMenuItem = function(){
+        for (var i = 0; i < $rootScope.menuItems.length; i++) {
+          if($rootScope.menuItems[i].selected){
+            return $rootScope.menuItems[i];
+          }
+        }
+      };
+
+      this.ShowMenu = function(){        
+        if($cookies.session === 'tasks'){
+          return true;
+        }
+        return false;
+      };
+
+      this.Logout = function(){
+          delete $cookies.session;
+      };
+
+      this.Toggle = function(name){
+        for (var i = 0; i < $rootScope.menuItems.length; i++) {
+          if(name === $rootScope.menuItems[i].name ){
+            $rootScope.menuItems[i].selected = true;
+            $rootScope.currMenuItem = $rootScope.menuItems[i];          
+            $location.path( $rootScope.currMenuItem.name );
+          }
+          else{
+            $rootScope.menuItems[i].selected = false;
+          }
+        }
+      };
+
+      this.IsAuthenticated = function(){
+          if($cookies.session === undefined) {      
+            $location.path( 'Login' );
+        }
+      };
+  })
+
+  //Menu Controller
+  .controller('MenuCtrl', function ($rootScope, $scope, MenuService) {
+    $rootScope.menuItems = MenuService.InitMenuItems();
+
+    //Checks to see if user is authenticated
+    MenuService.IsAuthenticated();
+
+    $rootScope.currMenuItem = MenuService.CurrentMenuItem();
+    $rootScope.toggle = function(name) { MenuService.Toggle(name); };
+    $rootScope.showMenu = function() { return MenuService.ShowMenu(); };
+    $rootScope.logout = function() { MenuService.Logout(); };
 
   });

@@ -17,15 +17,19 @@ describe('Controller: LoginCtrl', function () {
   })); 
 
   it('loginModule username not initialiazed', function () {
-    expect(scope.loginModule.username).toBe('');
+    expect(scope.username).toBe('');
   });
 
   it('loginModule password not initialiazed', function () {
-    expect(scope.loginModule.password).toBe('');
+    expect(scope.password).toBe('');
   });
 
   it('loginModule error not initialiazed', function () {
-    expect(scope.loginModule.error).toBe('');
+    expect(scope.error).toBe('');
+  });
+
+  it('loginModule result not initialiazed', function () {
+    expect(scope.result).toBe(true);
   });
 
 });

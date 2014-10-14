@@ -8,10 +8,8 @@
  * Controller of the slenderpmApp
  */
 angular.module('slenderpmApp')
-  .controller('CommentsCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('CommentsCtrl', function ($scope, MenuService) {
+
+    MenuService.Toggle('Comments');
+    
   });

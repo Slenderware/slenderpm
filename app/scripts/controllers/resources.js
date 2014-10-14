@@ -8,10 +8,8 @@
  * Controller of the slenderpmApp
  */
 angular.module('slenderpmApp')
-  .controller('ResourcesCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ResourcesCtrl', function ($scope, MenuService) {
+
+    MenuService.Toggle('Resources');
+    
   });

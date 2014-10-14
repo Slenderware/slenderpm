@@ -1,1 +1,21 @@
-<div class="taskView"> </div>
+<div class="taskView" style="height:100%"> <div class="container-fluid" style="height:100%"> <div class="row" style="height:100%"> <div class="col-lg-3 col-md-2 col-sm-3 col-xs-12" style="background:#ecf0f1;height:100%"> <div id="tree1"></div> </div> </div> </div> <script>var data = [
+		    {
+		        label: 'Task1',
+		        children: [
+		            { label: 'child1' },
+		            { label: 'child2' }
+		        ]
+		    },
+		    {
+		        label: 'Task2',
+		        children: [
+		            { label: 'child3' }
+		        ]
+		    }
+		];
+
+		$(function() {
+		    $('#tree1').tree({
+		        data: data
+		    });
+		});</script> </div>

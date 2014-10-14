@@ -8,12 +8,12 @@
  * Controller of the slenderpmApp
  */
 angular.module('slenderpmApp')
-  .controller('TasksCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
+  
+
+  .controller('TasksCtrl', function ($scope, MenuService) {
+    
+   MenuService.Toggle('Tasks');
 
     $scope.roleList1 = [
         { 'roleName' : 'User', 'roleId' : 'role1', 'children' : [

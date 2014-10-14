@@ -13,10 +13,7 @@ angular.module('slenderpmApp')
   .factory('LoginModule', function () {
   		
   		 var LoginModule = function(){
-  			this.username = '';
-  			this.password = '';
-  			this.error = '';
-  			this.result = true;
+  			
   		};
 
   		return LoginModule;
@@ -39,48 +36,46 @@ angular.module('slenderpmApp')
   })
 
 //Service called LoginService
-  .service('LoginService', function($cookies, LoginModule){
-
-  		//Initialize Login Module using a factory
-  		this.InitLoginModule = function(){
-  			var login = new LoginModule();
-  			console.log('sadf');
-  			return login; 
-  		};
-
+  .service('LoginService', function($location, $cookies){
+	
   		//Authenticates user
-  		this.authenticate = function(username, password){	
+  		this.Authenticate = function(username, password){	
        
-          if(true) {    
-            console.log(username + password);
-            $cookies.session = 'tasks';
-
+          if(username.length !== 0 && password.length !== 0) {
+            $cookies.session = 'tasks';            
             return true;
           }
           else {
-            return false;
+            return false;            
           }  
 
       };  
+
+      this.IsAuthenticated = function(){
+          if($cookies.session !== undefined) {      
+            $location.path( 'Tasks' );
+        }
+      };
       	
   })
 //Controller that encapsulates LoginModule
-  .controller('LoginCtrl', function ($cookies, $scope, $location, LoginService) {
+  .controller('LoginCtrl', function ($scope, $location, LoginService) {
+    
+		$scope.username = '';
+    $scope.password = '';
+    $scope.result = true;
+    $scope.error = '';
 
-		$scope.loginModule = LoginService.InitLoginModule();
+    LoginService.IsAuthenticated();
 
-     if($cookies.session !== undefined) {      
-          $location.path( 'Tasks' );
+ 		$scope.authenticate = function(){   			
+ 			$scope.result = LoginService.Authenticate($scope.username, $scope.password);
+
+      if($scope.result){
+        $location.path( 'Tasks' );
+      }else{
+        $scope.error = 'Username/Password was incorrect!';
       }
-
-   		$scope.authenticate = function(){   			
-   			$scope.loginModule.result = LoginService.authenticate($scope.loginModule.username, $scope.loginModule.password);
+    };
    			
-   			if($scope.loginModule.result === true){   				
-   				$location.path( 'Tasks' );
-   			}
-   			else{
-   				$scope.loginModule.error = 'Username/Password was incorrect!';
-   			}
-   		};
   });

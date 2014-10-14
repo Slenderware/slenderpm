@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="bower_components/slendermenu/dist/css/jquery.slendermenu.css" />
     <link rel="stylesheet" href="bower_components/slender-ui/dist/css/jquery.slender-ui.css" />
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/jqtree/jqtree.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -19,12 +20,12 @@
     <link rel="stylesheet" href="styles/pace.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-cloak>  
+  <body ng-app="slenderpmApp" ng-cloak>  
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div style="width:100%;height:100%;" >
-       <nav class="navbar navbar-default navbar-fixed-top custom" role="navigation">
+    <div style="width:100%;height:100%;overflow:none;" >
+       <nav class="navbar navbar-default navbar-fixed-top custom" role="navigation" ng-controller="MenuCtrl" >
           <div class="container">
             <img class="logothumb" logo src='images/logo.png'></img>
             <a id="selector"><i class="fa fa-navicon fa-lg" ng-show="showMenu()"></i></a>
@@ -50,7 +51,7 @@
         </nav>
 
         <div class="content">
-            <div class="slenmenu" style="margin-top:50px;" ng-show="showMenu()">
+            <div class="slenmenu" style="margin-top:50px;" ng-show="showMenu()" ng-controller="MenuCtrl" >
                 <div style="overflow:hidden;cursor:pointer;background:#2c3e50;color:#ecf0f1;">
                     <img src='images/yeoman.png' style="float:left;"></img>
                     <p style="float:left;margin-top:0.7em;">Jannik Richter</p>
@@ -63,13 +64,13 @@
             </div>    
 
             <!-- Add your site or application content here -->  
-            <div class="topmenu" ng-show="showMenu()">
+            <div class="topmenu" ng-show="showMenu()" ng-controller="MenuCtrl" style="overflow:hidden;">
                 <ol class="breadcrumb">
                   <li><a href="#">Home</a></li>
                   <li class="active">{{currMenuItem.name}}</li>             
                 </ol>
             </div>  
-            <div ng-view="" style="height:100%;"></div>
+            <div ng-view="" style="overflow-y:auto;height:100%;"></div>
         </div>
     </div>
     
@@ -106,6 +107,7 @@
     <script src="bower_components/slendermenu/dist/js/jquery.slendermenu.js"></script>
     <script src="bower_components/slender-ui/dist/js/jquery.slender-ui.js"></script>
     <script src="bower_components/pace/pace.js"></script>
+    <script src="bower_components/jqtree/tree.jquery.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

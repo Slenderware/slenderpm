@@ -44,7 +44,10 @@ angular
         templateUrl: 'views/projects.html',
         controller: 'ProjectsCtrl'
       })
+      .when('/Error', {
+        templateUrl: '404.html'
+      })
       .otherwise({
-        redirectTo: '/Login'
+        redirectTo: '/Error'
       });
   });
