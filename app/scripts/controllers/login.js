@@ -41,7 +41,7 @@ angular.module('slenderpmApp')
   		//Authenticates user
   		this.Authenticate = function(username, password){	
        
-          if(username.length !== 0 && password.length !== 0) {
+          if(username === 'admin' && password === 'admin') {
             $cookies.session = 'tasks';            
             return true;
           }
@@ -50,6 +50,10 @@ angular.module('slenderpmApp')
           }  
 
       };  
+
+      this.Register = function(){
+        $location.path( 'Register' );
+      };
 
       this.IsAuthenticated = function(){
           if($cookies.session !== undefined) {      
@@ -67,6 +71,10 @@ angular.module('slenderpmApp')
     $scope.error = '';
 
     LoginService.IsAuthenticated();
+
+    $scope.register = function(){
+      LoginService.Register();
+    };
 
  		$scope.authenticate = function(){   			
  			$scope.result = LoginService.Authenticate($scope.username, $scope.password);

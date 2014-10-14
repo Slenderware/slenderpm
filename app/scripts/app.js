@@ -43,11 +43,12 @@ angular
       .when('/Projects', {
         templateUrl: 'views/projects.html',
         controller: 'ProjectsCtrl'
-      })
-      .when('/Error', {
-        templateUrl: '404.html'
+      })      
+      .when('/Register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl'
       })
       .otherwise({
-        redirectTo: '/Error'
+        redirectTo: '/Login'
       });
   });
