@@ -18,7 +18,7 @@
 					    <label for="exampleInputPassword1">Password</label>
 					    <input type="password" class="form-control" id="txtPassword" placeholder="Password" ng-model="password">
 					  </div>	
-					  	<div class="alert alert-danger" role="alert" ng-hide="result">{{error}}</div>
+					  	<div ng-class="result.success ? 'alert alert-success' : 'alert alert-danger'" ng-hide="result === undefined">{{result.message}}</div>
 					</form>
 			  	</div>
 			  	<div class="panel-footer">

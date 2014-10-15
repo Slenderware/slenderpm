@@ -17,6 +17,33 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
+
+  .factory('ResultModule', function () {
+      
+       var ResultModule = function(success, message){
+        this.success = success;
+        this.message = message;       
+      };
+
+      return ResultModule;
+  })
+
+  .factory('SessionModule', function () {
+      
+       var SessionModule = function(username, page, token){
+        this.username = username;
+        this.page = page;
+        this.token = token;       
+      };
+
+      this.toString = function(){
+        console.log(this.username + ', ' + this.page + ', ' + this.token);
+        return this.username + ', ' + this.page + ', ' + this.token;
+      };
+
+      return SessionModule;
+  })
+
   .config(function ($routeProvider) {
     $routeProvider     
       .when('/Tasks', {

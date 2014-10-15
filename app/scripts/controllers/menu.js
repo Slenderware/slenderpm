@@ -57,6 +57,7 @@ angular.module('slenderpmApp')
 
       this.Logout = function(){
           delete $cookies.session;
+          $location.path( 'Login' );
       };
 
       this.Toggle = function(name){

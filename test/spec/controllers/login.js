@@ -17,19 +17,6 @@ describe('Controller: LoginCtrl', function () {
   })); 
 
   it('loginModule username not initialiazed', function () {
-    expect(scope.username).toBe('');
+    expect(scope.result).toBe(undefined);
   });
-
-  it('loginModule password not initialiazed', function () {
-    expect(scope.password).toBe('');
-  });
-
-  it('loginModule error not initialiazed', function () {
-    expect(scope.error).toBe('');
-  });
-
-  it('loginModule result not initialiazed', function () {
-    expect(scope.result).toBe(true);
-  });
-
 });

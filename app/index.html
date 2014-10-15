@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="bower_components/slender-ui/dist/css/jquery.slender-ui.css" />
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/jqtree/jqtree.css" />
+    <link rel="stylesheet" href="bower_components/angular-gantt/assets/gantt.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -31,7 +32,7 @@
             <a id="selector"><i class="fa fa-navicon fa-lg" ng-show="showMenu()"></i></a>
             
            <div class="btn-group" ng-show="showMenu()"> 
-                 <a data-toggle="dropdown"<i class="fa fa-archive fa-lg" ></i></a>    
+                 <a data-toggle="dropdown"<i class="fa fa-cogs fa-lg" ></i></a>    
               <ul class="dropdown-menu" role="menu">   
                 <li><a>Project 1</a></li>
                 <li><a>Project 2</a></li>
@@ -39,19 +40,12 @@
                 <li><a>Project 4</a></li>
               </ul>
             </div>
-
-            <div class="btn-group" style="float:right;margin:1em;" ng-show="showMenu()"> 
-                 <a data-toggle="dropdown"<i class="fa fa-cog fa-lg" ></i></a>    
-              <ul class="dropdown-menu" role="menu" style="left:-10em;top: 170%;">                
-                <li class="divider"></li>
-                <li><a href="#/Login" ng-click='logout()'>Logout</a></li>
-              </ul>
-            </div>
+            <a ng-click='logout()' style="float:right;"><i class="fa fa-sign-out fa-lg" ></i></a>   
           </div>
         </nav>
 
         <div class="content">
-            <div class="slenmenu" style="margin-top:50px;" ng-show="showMenu()" ng-controller="MenuCtrl" >
+            <div class="slenmenu" ng-show="showMenu()" ng-controller="MenuCtrl" >
                 <div style="overflow:hidden;cursor:pointer;background:#2c3e50;color:#ecf0f1;">
                     <img src='images/yeoman.png' style="float:left;"></img>
                     <p style="float:left;margin-top:0.7em;">Jannik Richter</p>
@@ -69,8 +63,10 @@
                   <li><a href="#">Home</a></li>
                   <li class="active">{{currMenuItem.name}}</li>             
                 </ol>
-            </div>  
-            <div ng-view="" style="overflow-y:auto;height:100%;"></div>
+            </div> 
+            <div class="mainView" style="height:100%;">
+                <div ng-view="" style="overflow-y:auto;height:100%;"></div>
+            </div>
         </div>
     </div>
     
@@ -92,6 +88,11 @@
     <![endif]-->
     <!-- endbuild -->
 
+    <script>
+        window.paceOptions = {
+          target: '.mainView'
+        }
+    </script>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -108,6 +109,10 @@
     <script src="bower_components/slender-ui/dist/js/jquery.slender-ui.js"></script>
     <script src="bower_components/pace/pace.js"></script>
     <script src="bower_components/jqtree/tree.jquery.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angular-gantt/assets/angular-gantt.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
