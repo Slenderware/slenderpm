@@ -111,13 +111,6 @@ body {
 	}
 }
 
-/*TASK VIEW*/
-.taskView{
-	height:100%;
-	width:100%;
-	background:#fff;
-}
-
 /*GANTT VIEW*/
 .ganttView{
 	height:100%;
@@ -133,4 +126,11 @@ body {
 .gantt_task_line {
 	background-color: #3498db;
 	border: 1px solid #2980b9;
+}
+
+/*TIMESHEET VIEW*/
+.timesheetView{
+	height:100%;
+	width:100%;
+	background:#fff;
 }

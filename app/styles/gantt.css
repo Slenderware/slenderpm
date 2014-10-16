@@ -1,0 +1,13 @@
+.gantt_grid, .gantt_task {
+	overflow-x: hidden;	
+	display: inline-block;
+	vertical-align: top;
+}
+
+.gantt_container {
+font-family: Arial;
+font-size: 13px;
+border: 1px solid #cecece;
+position: relative;
+white-space: nowrap;
+}

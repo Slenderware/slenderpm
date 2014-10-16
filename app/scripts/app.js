@@ -75,6 +75,10 @@ angular
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
       })
+      .when('/Timesheet', {
+        templateUrl: 'views/timesheet.html',
+        controller: 'TimesheetCtrl'
+      })
       .otherwise({
         redirectTo: '/Login'
       });
