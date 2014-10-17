@@ -8,13 +8,6 @@
  * Controller of the slenderpmApp
  */
 angular.module('slenderpmApp')
-
-.directive('taskList', function() {
-    return {    
-      templateUrl: 'templates/tasklist.html'
-    };
-  })
-
  //Factory for LoginModule
   .factory('TaskModule', function () {
       
@@ -24,8 +17,4 @@ angular.module('slenderpmApp')
       };
 
       return LoginModule;
-  }) 
-
-  .controller('TasksCtrl', ['$scope', 'MenuService', function ($scope, MenuService) {
-   MenuService.Toggle('Tasks');  
-  }]);
+  })

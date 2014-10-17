@@ -1,17 +1,8 @@
-<link rel="stylesheet" type="text/css" href="styles/tasks.css">
 <div class="taskView" style="height:100%;">
       <div class="container-fluid task_container"  style="height:100%;" >
 		  <div class="row" style="height:100%;">
 		    <div class="col-lg-3 col-md-6 col-sm-5 col-xs-12" style="height:100%;padding-right:0px;">
-		    	<div class="task_grid">
-				   <div class="gantt_grid_scale" style="height: 34px; line-height: 33px;">
-				      <div class="task_grid_head_cell" style="width:100px;float:left;" column_id="text">Task name</div>			
-				      <div class="task_grid_head_cell task_grid_head_add" style="width:43px;float:right;" column_id="add"></div>
-				   </div>
-				   <div class="task_grid_data">
-				      <div id="tree1" class="taskTree"></div>
-				   </div>				   
-				</div> 	
+		    	<div task-list style="height:100%;"></div>
 			</div>
 			<div class="col-lg-9 col-md-6 col-sm-7 col-xs-12" id="mainContent">
 				<div class="container-fluid task_container"  style="height:100%;" >
@@ -64,29 +55,5 @@
 			</div>
 		  </div>
 		</div>
-
-		<script>
-		var data = [
-		    {
-		        label: 'Task1',
-		        children: [
-		            { label: 'child1' },
-		            { label: 'child2' }
-		        ]
-		    },
-		    {
-		        label: 'Task2',
-		        children: [
-		            { label: 'child3' }
-		        ]
-		    }
-		];
-
-		$(function() {
-		    $('#tree1').tree({
-		        data: data
-		    });
-		});
-		</script>
 </div>
 

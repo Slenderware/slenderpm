@@ -44,7 +44,9 @@ body {
 	float:left;	
   	height: 100%;
   	width: 100%;
-  	background:#2C3E50;
+  	overflow:hidden;
+  	background-image: url('../images/footer_lodyas.png');
+  	background-repeat: repeat;
 }
 
 .breadcrumb {	
