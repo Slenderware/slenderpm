@@ -17,9 +17,14 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'ngSlenderList',
-    'slenderpmApp.login'
+    'ngTouch',    
+    'slenderpmApp.login',
+    'slenderpmApp.register',
+    'slenderpmApp.task',
+    'slenderpmApp.menu',
+    'slenderpmApp.gantt',
+    'slenderpmApp.comment',
+    'slenderpmApp.resource'
   ])
 
   .factory('ResultModule', function () {
@@ -51,38 +56,30 @@ angular
   .config(function ($routeProvider) {
     $routeProvider     
       .when('/Tasks', {
-        templateUrl: 'views/tasks.html',
+          templateUrl: 'modules/task/views/tasks.html',
         controller: 'TasksCtrl'
       })    
      
       .when('/Gantt', {
-        templateUrl: 'views/gantt.html',
+          templateUrl: 'modules/gantt/views/gantt.html',
         controller: 'GanttCtrl'
       })
       .when('/Comments', {
-        templateUrl: 'views/comments.html',
+          templateUrl: 'modules/comment/views/comments.html',
         controller: 'CommentsCtrl'
       })
       .when('/Resources', {
-        templateUrl: 'views/resources.html',
+          templateUrl: 'modules/resource/views/resources.html',
         controller: 'ResourcesCtrl'
       })
       .when('/Login', {
           templateUrl: 'modules/login/views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/Projects', {
-        templateUrl: 'views/projects.html',
-        controller: 'ProjectsCtrl'
-      })      
-      .when('/Register', {
-        templateUrl: 'views/register.html',
+               .when('/Register', {
+          templateUrl: 'modules/register/views/register.html',
         controller: 'RegisterCtrl'
-      })
-      .when('/Timesheet', {
-        templateUrl: 'views/timesheet.html',
-        controller: 'TimesheetCtrl'
-      })
+      })      
       .otherwise({
         redirectTo: '/Login'
       });

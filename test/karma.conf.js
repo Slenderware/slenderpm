@@ -27,7 +27,12 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/ng-slender-list/dist/ngSlenderList.js',
-      'app/scripts/**/*.js',
+      'app/scripts.app.js',
+      'app/modules/login/*.js',     
+      'app/modules/register/*.js',
+      'app/modules/task/*.js',
+      'app/modules/**/**/*.js',
+      'app/scripts/**/*.js',     
       'test/spec/**/*.js'
     ],
 

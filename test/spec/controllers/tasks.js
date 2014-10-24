@@ -3,7 +3,7 @@
 describe('Controller: TasksCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('slenderpmApp'));
+    beforeEach(module('slenderpmApp', 'slenderpmApp.task'));
 
   var TasksCtrl,
     scope;

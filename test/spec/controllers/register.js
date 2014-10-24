@@ -3,7 +3,7 @@
 describe('Controller: RegisterCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('slenderpmApp'));
+    beforeEach(module('slenderpmApp', 'slenderpmApp.register'));
 
   var RegisterCtrl,
     scope;
