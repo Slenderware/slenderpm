@@ -9,12 +9,6 @@
  */
 angular.module('slenderpmApp')
 
-.directive('taskList', function() {
-    return {    
-      templateUrl: 'templates/tasklist.html'
-    };
-  })
-
  //Factory for LoginModule
   .factory('TaskModule', function () {
       
