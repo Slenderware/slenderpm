@@ -7,7 +7,7 @@
  * # LoginCtrl
  * Controller of the slenderpmApp
  */
-angular.module('slenderpmApp')
+angular.module('slenderpmApp.login.service')
 
 //Service called LoginService
   .service('LoginService', ['$location', '$cookies', 'ResultModule','LoginModule', function($location, $cookies, ResultModule, LoginModule){

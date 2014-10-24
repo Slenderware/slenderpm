@@ -7,7 +7,7 @@
  * # LoginCtrl
  * Controller of the slenderpmApp
  */
-angular.module('slenderpmApp')
+angular.module('slenderpmApp.login.factory')
 
 //Factory for LoginModule
   .factory('LoginModule', function () {

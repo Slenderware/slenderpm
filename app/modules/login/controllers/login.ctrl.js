@@ -7,7 +7,7 @@
  * # LoginCtrl
  * Controller of the slenderpmApp
  */
-angular.module('slenderpmApp')
+angular.module('slenderpmApp.login.controller')
 
 //Controller that encapsulates LoginModule
   .controller('LoginCtrl', ['$scope', '$location', 'LoginService', function ($scope, $location, LoginService) {

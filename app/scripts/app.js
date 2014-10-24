@@ -1,3 +1,5 @@
+/// <reference path="../modules/login/views/login.html" />
+/// <reference path="../modules/login/views/login.html" />
 'use strict';
 
 /**
@@ -16,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngSlenderList'
+    'ngSlenderList',
+    'slenderpmApp.login'
   ])
 
   .factory('ResultModule', function () {
@@ -65,7 +68,7 @@ angular
         controller: 'ResourcesCtrl'
       })
       .when('/Login', {
-        templateUrl: 'views/login.html',
+          templateUrl: 'modules/login/views/login.html',
         controller: 'LoginCtrl'
       })
       .when('/Projects', {
