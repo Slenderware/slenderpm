@@ -15,13 +15,13 @@
 					    <input type="text" class="form-control" id="txtEmail" placeholder="Enter email" ng-model="name">
 					  </div>
 					  <div class="form-group">
-					    <label for="exampleInputPassword1">Surname</label>
-					    <input type="text" class="form-control" id="txtPassword" placeholder="Password" ng-model="surname">
+					    <label for="exampleInputPassword1">Password</label>
+					    <input type="password" class="form-control" id="txtPassword" placeholder="Password" ng-model="surname">
 					  </div>
 					  <div class="form-group">
 					    <label for="exampleInputPassword1">Email</label>
-					    <input type="text" class="form-control" id="txtPassword" placeholder="Password" ng-model="email">
-					  </div>					
+					    <input type="password" class="form-control" id="txtPasswordConfirm" placeholder="Confirm Password" ng-model="email">
+					  </div>                      					
 					  	<div ng-class="result.success ? 'alert alert-success' : 'alert alert-danger'" ng-hide="result === undefined" role="alert">{{result.message}}</div>
 					</form>
 			  	</div>

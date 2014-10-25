@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="bower_components/jqtree/jqtree.css" />
     <link rel="stylesheet" href="bower_components/angular-gantt/assets/gantt.css" />
     <link rel="stylesheet" href="bower_components/gantt/codebase/dhtmlxgantt.css" />
-    <link rel="stylesheet" href="bower_components/ng-slender-list/dist/ngSlenderList.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -30,7 +29,7 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div style="width:100%;height:100%;overflow:none;" >
+    <div style="width:100%;height:100%;overflow:hidden;" >
        <nav class="navbar navbar-default navbar-fixed-top custom" role="navigation" ng-controller="MenuCtrl" ng-show="showMenu()">
           <div class="container">
             <img class="logothumb" logo src='images/logo.png'></img>
@@ -119,7 +118,6 @@
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
     <script src="bower_components/gantt/codebase/dhtmlxgantt.js"></script>
-    <script src="bower_components/ng-slender-list/dist/ngSlenderList.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -138,6 +136,9 @@
 
         <script src="modules/task/submodules/ngSlenderUserList/ngSlenderUserList.js"></script>
         <script src="modules/task/submodules/ngSlenderUserList/directives/ngSlender.directive.js"></script>
+
+      <script src="modules/task/submodules/ngSlenderList/ngSlenderList.js"></script>
+        <script src="modules/task/submodules/ngSlenderList/directives/ngSlender.directive.js"></script>
 
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->

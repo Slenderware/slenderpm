@@ -3,7 +3,7 @@
 describe('Controller: GanttCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('slenderpmApp'));
+    beforeEach(module('slenderpmApp', 'slenderpmApp.gantt'));
 
   var GanttCtrl,
     scope;

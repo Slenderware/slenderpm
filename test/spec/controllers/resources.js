@@ -3,7 +3,7 @@
 describe('Controller: ResourcesCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('slenderpmApp'));
+    beforeEach(module('slenderpmApp', 'slenderpmApp.resource'));
 
   var ResourcesCtrl,
     scope;

@@ -31,6 +31,9 @@ module.exports = function(config) {
       'app/modules/login/*.js',     
       'app/modules/register/*.js',
       'app/modules/task/*.js',
+       'app/modules/menu/*.js',
+      'app/modules/resource/*.js',
+      'app/modules/gantt/*.js',
       'app/modules/**/**/*.js',
       'app/scripts/**/*.js',     
       'test/spec/**/*.js'

@@ -3,7 +3,7 @@
 describe('Controller: MenuCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('slenderpmApp'));
+    beforeEach(module('slenderpmApp', 'slenderpmApp.menu'));
 
   var MenuCtrl,
     scope;
