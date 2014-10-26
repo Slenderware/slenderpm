@@ -10,19 +10,21 @@
 		  		</div>
 			  	<div class="panel-body">
 			    	<form role="form">
-					  <div class="form-group">
-					    <label for="exampleInputEmail1">Email address</label>
-					    <input type="text" class="form-control" id="txtEmail" placeholder="Enter email" ng-model="username">
-					  </div>
-					  <div class="form-group">
+					  <div ng-class="validate(username) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+					    <label for="exampleInputEmail1">Username</label>
+					    <input type="text" class="form-control" id="txtEmail" placeholder="Enter username" ng-model="username">
+                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(username)"></span>
+					  </div>                       
+					  <div ng-class="validate(password) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
 					    <label for="exampleInputPassword1">Password</label>
 					    <input type="password" class="form-control" id="txtPassword" placeholder="Password" ng-model="password">
+                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(password)"></span>
 					  </div>	
 					  	<div ng-class="result.success ? 'alert alert-success' : 'alert alert-danger'" ng-hide="result === undefined">{{result.message}}</div>
 					</form>
 			  	</div>
 			  	<div class="panel-footer">
-			  		<a type="submit" class="btn btn-primary" style="float:right;" ng-click='authenticate()'>Login</a>
+			  		<a type="submit" class="btn btn-primary" style="float:right;" ng-click='authenticate()' ng-disabled="!validate(username) || !validate(password) || username === undefined || password === undefined">Login</a>
 					<a type="submit" class="btn btn-default" style="float:right;" ng-click='register()'>Register</a>
 			  	</div>
 			</div>

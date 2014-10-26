@@ -10,7 +10,7 @@
 angular.module('slenderpmApp.menu.service')
 
   //Service called MenuService
-  .service('MenuService', function ($location, $rootScope, $cookies, MenuItemModule) {
+  .service('MenuService', function ($http, $location, $rootScope, $q, $cookies, MenuItemModule) {
 
       //Initialize Login Module using a factory
       this.InitMenuItems = function () {
@@ -29,6 +29,31 @@ angular.module('slenderpmApp.menu.service')
 
           return items;
       };
+      
+      //Gets Projects for user based on sessionid in cookieStore
+      this.GetProjects = function (uri) {
+          var deferred = $q.defer();
+
+          $http({
+              method: 'POST',
+              url: uri.concat('projects/getProjects'),
+              data: 'sessionId=' + $cookies.session,
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
+          })
+          .success(function (data, status, headers, config) {
+              // this callback will be called asynchronously
+              // when the response is available   
+
+              deferred.resolve(data);
+          }).
+          error(function (data, status, headers, config) {
+              // called asynchronously if an error occurs
+              // or server returns response with an error status.               
+              deferred.resolve(data);
+          });
+
+          return deferred.promise;
+      };
 
       this.CurrentMenuItem = function () {
           for (var i = 0; i < $rootScope.menuItems.length; i++) {
@@ -39,7 +64,7 @@ angular.module('slenderpmApp.menu.service')
       };
 
       this.ShowMenu = function () {
-          if ($cookies.session === 'tasks') {
+          if ($cookies.session !== undefined) {
               return true;
           }
           return false;

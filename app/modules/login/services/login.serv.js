@@ -10,24 +10,35 @@
 angular.module('slenderpmApp.login.service')
 
 //Service called LoginService
-  .service('LoginService', ['$location', '$cookies', 'ResultModule','LoginModule', function($location, $cookies, ResultModule, LoginModule){
+  .service('LoginService', ['$http', '$location', '$q', '$cookies', 'ResultModule','LoginModule', function($http, $location, $q, $cookies, ResultModule, LoginModule){
 	
       this.InitLoginModule = function(username, password){
         return new LoginModule(username, password);
       };
 
   		//Authenticates user
-  		this.Authenticate = function(LoginModule){	
-          
-          if(LoginModule.username === 'admin' && LoginModule.password === 'admin') {
-            $cookies.session = 'tasks';            
-            return new ResultModule(true, 'Login was successfull, redirecting...');
-          }
-          else {
-            return new ResultModule(false, 'Username/Password was incorrect!');         
-          }  
+  		this.Authenticate = function(LoginModule, uri){	  		    
+  		    var deferred = $q.defer();
+  		   
+  		    $http({
+  		        method: 'POST',
+  		        url: uri.concat('acounts/authentication/authenticate'),
+  		        data: 'username=' + LoginModule.username + '&password=' + LoginModule.password,
+  		        headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
+  		    })
+            .success(function (data, status, headers, config) {
+                // this callback will be called asynchronously
+                // when the response is available                
+                deferred.resolve(data);
+            }).
+            error(function (data, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.               
+                deferred.resolve(data);
+            });
 
-      };  
+  		    return deferred.promise;
+  		};
 
       this.Register = function(){
         $location.path( 'Register' );

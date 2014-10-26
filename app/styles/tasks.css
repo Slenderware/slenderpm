@@ -188,3 +188,18 @@ float: left;
 border: 1px solid #333;
 background: #999;
 }
+
+/* ngTaskList */
+#accordion .panel {
+    border-radius: 0px;   
+    border-bottom-color: #efefef;
+    border-top-color: #fff;
+}
+
+#accordion .panel-default > .panel-heading {
+    color: #333;
+    background-color: #fdfdfd;
+    border-bottom-color: #efefef;
+    border-top-color: #fff;
+    cursor:pointer;
+}

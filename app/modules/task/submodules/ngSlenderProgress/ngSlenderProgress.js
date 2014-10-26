@@ -12,10 +12,12 @@ angular.module('ngSlenderProgress.config', [])
 angular.module('ngSlenderProgress.directives', []);
 angular.module('ngSlenderProgress.filters', []);
 angular.module('ngSlenderProgress.services', []);
+angular.module('ngSlenderProgress.controllers', []);
 angular.module('ngSlenderProgress',
     [
         'ngSlenderProgress.config',
         'ngSlenderProgress.directives',
         'ngSlenderProgress.filters',
-        'ngSlenderProgress.services'
+        'ngSlenderProgress.services',
+        'ngSlenderProgress.controllers'
     ]);

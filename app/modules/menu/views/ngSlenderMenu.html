@@ -1,0 +1,11 @@
+﻿<div class="slenmenu" ng-show="showMenu()">
+    <div style="overflow:hidden;cursor:pointer;background:#2c3e50;color:#ecf0f1;">
+        <img src='images/yeoman.png' style="float:left;"></img>
+        <p style="float:left;margin-top:0.7em;">Jannik Richter</p>
+    </div>
+    <ul style="clear:both;">            
+        <li ng-repeat="menuItem in menuItems" ng-class="menuItem.selected ? 'active' : ''" ng-click='toggle(menuItem.name)'>                      
+            <i class="fa fa-{{menuItem.icon}}"></i><span style="margin-left:1em;">{{menuItem.name}}</span>                        
+        </li>            
+    </ul>
+</div>    

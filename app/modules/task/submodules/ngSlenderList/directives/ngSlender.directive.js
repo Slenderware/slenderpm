@@ -5,6 +5,10 @@ angular
 
   .directive('taskList', function() {
     return {    
-        templateUrl: 'modules/task/submodules/ngSlenderList/ngSlenderList.html'
+        templateUrl: 'modules/task/submodules/ngSlenderList/ngSlenderList.html',
+        restrict: 'E',        
+        scope: {
+            tasks: '=tasks'            
+        }
     };
   });

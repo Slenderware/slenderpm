@@ -9,6 +9,24 @@ body {
   height: 100%;
 }
 
+.alert {
+    border-radius: 0px; 
+}
+
+/*Input fields*/
+.has-error ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #a94442 !important;
+}
+.has-error :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #a94442 !important;
+}
+.has-error ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #a94442 !important;
+}
+.has-error :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #a94442 !important;
+}
+
 /*Custom Navbar*/
 .navbar.custom{
 	background:#3498db;

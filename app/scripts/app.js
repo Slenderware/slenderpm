@@ -27,6 +27,16 @@ angular
     'slenderpmApp.resource'
   ])
 
+    .run(function ($rootScope) {
+        // start using constants module
+        $rootScope.RESTURI = 'http://10.0.0.11:8084/slenderware-webservice-rest/webresources/';
+        $rootScope.HEADERS = {  'Access-Control-Allow-Origin' : '*',
+                                'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            };
+    })
+
   .factory('ResultModule', function () {
       
        var ResultModule = function(success, message){
@@ -51,9 +61,10 @@ angular
       };
 
       return SessionModule;
-  })
+  })    
 
   .config(function ($routeProvider) {
+          
     $routeProvider     
       .when('/Tasks', {
           templateUrl: 'modules/task/views/tasks.html',

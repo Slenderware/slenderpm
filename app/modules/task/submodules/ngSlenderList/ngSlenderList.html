@@ -4,7 +4,21 @@
       <div class="task_grid_head_cell task_grid_head_add" style="width:43px;float:right;" column_id="add" data-toggle="modal" data-target="#myModal"></div>
    </div>
    <div class="task_grid_data">
-      <div id="tree1" class="taskTree"></div>
+        <div class="panel-group" id="accordion">
+            <div ng-repeat="task in tasks">
+              <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapse{{task.id}}">                                             
+                    {{task.title}} 
+                    <a data-toggle="modal" data-target="#myModal"><i class="fa fa-plus fa-lg" style="float:right;"></i></a>
+                </div>
+                <div id="collapse{{task.id}}" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    
+                  </div>
+                </div>
+              </div>              
+            </div>            
+        </div>
    </div>				   
 </div> 	
 
@@ -16,10 +30,7 @@
         <h4 class="modal-title">Create a task</h4>
       </div>
       <div class="modal-body">
-        <input type="text" class="form-control" placeholder="Name"></input>
-        <input type="text" class="form-control" placeholder="Name"></input>
-        <input type="text" class="form-control" placeholder="Name"></input>
-        <input type="text" class="form-control" placeholder="Name"></input>
+        <input type="text" class="form-control" placeholder="Name"></input>        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -28,26 +39,3 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-<script>
-    var data = [
-        {
-            label: 'node1', id: 1,
-            children: [
-                { label: 'child1', id: 2 },
-                { label: 'child2', id: 3 }
-            ]
-        },
-        {
-            label: 'node2', id: 4,
-            children: [
-                { label: 'child3', id: 5 }
-            ]
-        }
-    ];
-    $('#tree1').tree({
-        data: data,
-        autoOpen: false,
-        dragAndDrop: false
-    });
-</script>
