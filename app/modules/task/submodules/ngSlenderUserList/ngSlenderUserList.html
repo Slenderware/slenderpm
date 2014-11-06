@@ -1,6 +1,23 @@
 ﻿<div class="panel panel-default fade-in five">
-	<div class="panel-heading">Users</div>
-	<div class="panel-body" style="height:300px;">
-							  								    
+	<div class="panel-heading">Users</div>		
+	<div class="panel-body" style="height:580px;overflow:auto;">
+        <ul class="media-list">
+            <li class="media" ng-repeat="user in users">
+                <a class="pull-left" href="#">
+                    <i class="fa fa-user fa-2x" style="float:left;color:#34495e;"></i>     
+                </a>
+                <div class="media-body">
+                    <h5 class="media-heading">{{user.username}}</h5>                   
+                </div>
+            </li>               
+        </ul>
 	</div>
+    <div class="panel-footer">
+        <form role="form">
+            <div class="form-group">
+                <input type="text" class="form-control" id="txtComment" placeholder="Enter email..." style="width:80%;float:left;">
+            </div>
+            <button type="submit" class="btn btn-default" style="float:right;margin-top: 0em;margin-bottom:1em;">Add User</button>
+        </form>
+    </div>				  								    
 </div>

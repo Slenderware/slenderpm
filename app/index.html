@@ -26,7 +26,7 @@
     <link href="styles/menu.css" rel="stylesheet" />
     <!-- endbuild -->
   </head>
-  <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-cloak>  
+  <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-init="getProjects()" ng-cloak">  
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -90,6 +90,11 @@
         
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
+    <script src="modules/task/submodules/ngSlenderComments/ngSlenderComments.js"></script>
+    <script src="modules/task/submodules/ngSlenderComments/directives/ngSlender.directive.js"></script>
+    <script src="modules/task/submodules/ngSlenderComments/services/ngSlender.serv.js"></script>
+    <script src="modules/task/submodules/ngSlenderComments/controllers/ngSlender.ctrl.js"></script>
+
     <script src="modules/task/submodules/ngSlenderList/ngSlenderList.js"></script>
     <script src="modules/task/submodules/ngSlenderList/directives/ngSlender.directive.js"></script>
     <script src="modules/task/submodules/ngSlenderList/services/ngSlender.serv.js"></script>
@@ -100,14 +105,13 @@
     <script src="modules/task/submodules/ngSlenderProgress/services/ngSlender.serv.js"></script>
     <script src="modules/task/submodules/ngSlenderProgress/controllers/ngSlender.ctrl.js"></script>
 
-    <script src="modules/task/submodules/ngSlenderComments/ngSlenderComments.js"></script>
-    <script src="modules/task/submodules/ngSlenderComments/directives/ngSlender.directive.js"></script>
-
     <script src="modules/task/submodules/ngSlenderAttachments/ngSlenderAttachments.js"></script>
     <script src="modules/task/submodules/ngSlenderAttachments/directives/ngSlender.directive.js"></script>
 
     <script src="modules/task/submodules/ngSlenderUserList/ngSlenderUserList.js"></script>
     <script src="modules/task/submodules/ngSlenderUserList/directives/ngSlender.directive.js"></script>  
+    <script src="modules/task/submodules/ngSlenderUserList/services/ngSlender.serv.js"></script>
+    <script src="modules/task/submodules/ngSlenderUserList/controllers/ngSlender.ctrl.js"></script>
 
     <script src="scripts/app.js"></script>    
                  

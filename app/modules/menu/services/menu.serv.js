@@ -15,13 +15,13 @@ angular.module('slenderpmApp.menu.service')
       //Initialize Login Module using a factory
       this.InitMenuItems = function () {
           var item1 = new MenuItemModule('Tasks', 'tasks', true);
-          var item2 = new MenuItemModule('Gantt', 'area-chart', false);
+          //var item2 = new MenuItemModule('Gantt', 'area-chart', false);
           var item3 = new MenuItemModule('Comments', 'comments-o', false);
           var item4 = new MenuItemModule('Resources', 'group', false);
       
           var items = [];
           items.push(item1);
-          items.push(item2);
+          //items.push(item2);
           items.push(item3);
           items.push(item4);
         

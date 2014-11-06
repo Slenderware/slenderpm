@@ -11,5 +11,5 @@ angular.module('slenderpmApp.task.controller')
 
   .controller('TasksCtrl', ['$scope', 'MenuService', function ($scope, MenuService) {
       MenuService.Toggle('Tasks');
-            
+      
   }]);

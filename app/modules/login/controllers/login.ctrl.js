@@ -10,7 +10,7 @@
 angular.module('slenderpmApp.login.controller')
 
 //Controller that encapsulates LoginModule
-  .controller('LoginCtrl', ['$scope', '$cookies', '$location', 'LoginService', function ($scope, $cookies, $location, LoginService) {
+  .controller('LoginCtrl', ['$rootScope', '$scope', '$cookies', '$location', 'LoginService', function ($rootScope, $scope, $cookies, $location, LoginService) {
     
     LoginService.IsAuthenticated();
 
@@ -24,10 +24,10 @@ angular.module('slenderpmApp.login.controller')
             console.log($scope.result);
             if ($scope.result.success) {
                 $location.path('Tasks');
-                $cookies.session = $scope.result.sessionId;
+                $cookies.session = $scope.result.sessionId;              
             }
         });
-    }; 	
+    };
 
  	$scope.validate = function (_var) {
  	    

@@ -12,10 +12,12 @@ angular.module('ngSlenderComments.config', [])
 angular.module('ngSlenderComments.directives', []);
 angular.module('ngSlenderComments.filters', []);
 angular.module('ngSlenderComments.services', []);
+angular.module('ngSlenderComments.controllers', []);
 angular.module('ngSlenderComments',
     [
         'ngSlenderComments.config',
         'ngSlenderComments.directives',
         'ngSlenderComments.filters',
-        'ngSlenderComments.services'
+        'ngSlenderComments.services',
+        'ngSlenderComments.controllers'
     ]);

@@ -12,10 +12,12 @@ angular.module('ngSlenderUserList.config', [])
 angular.module('ngSlenderUserList.directives', []);
 angular.module('ngSlenderUserList.filters', []);
 angular.module('ngSlenderUserList.services', []);
+angular.module('ngSlenderUserList.controllers', []);
 angular.module('ngSlenderUserList',
     [
         'ngSlenderUserList.config',
         'ngSlenderUserList.directives',
         'ngSlenderUserList.filters',
-        'ngSlenderUserList.services'
+        'ngSlenderUserList.services',
+        'ngSlenderUserList.controllers'
     ]);

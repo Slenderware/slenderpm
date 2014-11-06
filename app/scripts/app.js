@@ -29,7 +29,7 @@ angular
 
     .run(function ($rootScope) {
         // start using constants module
-        $rootScope.RESTURI = 'http://10.0.0.10:8084/slenderware-webservice-rest/webresources/';
+        $rootScope.RESTURI = 'http://www.slenderware.co.za/slenderware-webservice-rest/webresources/';
         $rootScope.HEADERS = {  'Access-Control-Allow-Origin' : '*',
                                 'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
                                 'Content-Type': 'application/json',

@@ -10,8 +10,23 @@
 angular.module('slenderpmApp.menu.controller')
 
   //Menu Controller
-  .controller('MenuCtrl', function ($rootScope, $scope, MenuService, ngSlenderListService) {
+  .controller('MenuCtrl', function ($rootScope, $scope, MenuService, ngSlenderListService, LoginService, SlenderCommentService) {
       $rootScope.menuItems = MenuService.InitMenuItems();
+         
+      //Set current project and get tasks
+      $scope.currentProject = function (project) {         
+
+          $rootScope.currProject = project;
+          //Broadcast that default project is initialized
+          $rootScope.$broadcast('current-project-init');                   
+      };
+
+      $scope.getUser = function () {
+          LoginService.GetUser($scope.RESTURI).then(function (result) {
+              $rootScope.user = angular.fromJson(result);
+              console.log($scope.user);
+          });
+      };
 
       //Checks to see if user is authenticated
       MenuService.IsAuthenticated();
@@ -19,41 +34,29 @@ angular.module('slenderpmApp.menu.controller')
       $scope.projectsLoading = false;
       //Gets Projects for user based on sessionid in cookieStore
       $scope.getProjects = function () {
+          
           //Indicate that loading has started
           $scope.projectsLoading = true;
           if ($scope.projects === undefined) {
+              console.log(2);
               MenuService.GetProjects($scope.RESTURI).then(function (data) {
                   //Indicate that loading is complete
-                  $scope.projectsLoading = false;
-                  
+                  $scope.projectsLoading = false;                  
                   $scope.projects = angular.fromJson(data);
-
-                  $scope.currentProject($scope.projects[0]);
-
-                  if ($scope.projects.length !== 0) {
-                      $rootScope.currentProject = $scope.projects[0];
-                  }
-                  console.log($scope.projects);
+                  $scope.currentProject($scope.projects[0]);                                    
+                  //console.log($scope.projects);
 
               });
           }
           else {
               $scope.projectsLoading = false;
-
-              $scope.currentProject($scope.projects[0])
+              console.log('else 2');
+              $scope.currentProject($scope.currProject);
           }
       };
           
 
-      $scope.currentProject = function (project) {
-          
-          $scope.currentProject = project;
-         
-          ngSlenderListService.GetTasks($scope.currentProject.id, $scope.RESTURI).then(function (result) {
-              $scope.tasks = angular.fromJson(result);
-              $rootScope.currentTask = $scope.tasks[0];
-          });
-      };
+      
       $rootScope.currMenuItem = MenuService.CurrentMenuItem();
       $rootScope.toggle = function (name) { MenuService.Toggle(name); };
       $rootScope.showMenu = function () { return MenuService.ShowMenu(); };

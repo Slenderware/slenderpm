@@ -11,7 +11,5 @@ angular.module('ngSlenderProgress.services')
 
   //Service called ngSlenderProgressService
   .service('ngSlenderProgressService', function () {
-      this.GetProgress = function (taskid) {          
-          return '{"progress":"80"}';
-      };
+     
     });

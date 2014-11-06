@@ -6,9 +6,6 @@ angular
   .directive('taskList', function() {
     return {    
         templateUrl: 'modules/task/submodules/ngSlenderList/ngSlenderList.html',
-        restrict: 'E',        
-        scope: {
-            tasks: '=tasks'            
-        }
+        restrict: 'E'
     };
   });

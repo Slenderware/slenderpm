@@ -10,17 +10,22 @@
 angular.module('ngSlenderList.controllers')
 
   //TaskList Controller
-  .controller('SlenderTaskListCtrl', ['$scope', '$rootScope', 'ngSlenderListService', function ($scope, $rootScope, ngSlenderListService) {
-                
-      $scope.populateTasks = function () {
-          $scope.tasks = angular.fromJson(ngSlenderListService.GetTasks($scope.currentProject.id, $scope.RESTURI));
-          console.log($scope.tasks);
-      };
+  .controller('SlenderTaskListCtrl', ['$scope', '$rootScope', 'ngSlenderListService', 'SlenderCommentService' , function ($scope, $rootScope, ngSlenderListService, SlenderCommentService) {
+      
+      $scope.getTasks = function () {
+          ngSlenderListService.GetTasks($scope.currProject.id, $scope.RESTURI).then(function (result) {
+              //Populates tasks
+              $scope.tasks = angular.fromJson(result);
+              $rootScope.currTask = $scope.tasks[0];
 
-      $scope.setCurrentTask = function (task) {
-          $rootScope.currentTask = task;
-          console.log($rootScope.currTask.name);
+              //Broadcast that default task is initialized
+              $rootScope.$broadcast('current-task-init');
+          });
       };
+      
+      $scope.$on('current-project-init', function (event, args) {
+          $scope.getTasks();
+      });
 
       //$scope.populateSubTasks = func
 

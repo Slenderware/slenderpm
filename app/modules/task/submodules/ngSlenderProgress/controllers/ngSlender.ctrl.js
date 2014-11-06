@@ -19,5 +19,5 @@ angular.module('ngSlenderProgress.controllers')
 
       //$scope.populateSubTasks = func
 
-      $scope.getProgress(2);
+      //$scope.getProgress(2);
   }]);

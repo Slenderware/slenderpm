@@ -2,7 +2,7 @@
       <div class="container-fluid task_container"  style="height:100%;" >
 		  <div class="row" style="height:100%;">
 		    <div class="col-lg-3 col-md-6 col-sm-5 col-xs-12" style="height:100%;padding-right:0px;" ng-controller="SlenderTaskListCtrl">
-		    	<task-list style="height:100%;" tasks="tasks"></task-list>
+		    	<task-list style="height:100%;"></task-list>
 			</div>
 			<div class="col-lg-9 col-md-6 col-sm-7 col-xs-12" id="mainContent">
 				<div class="container-fluid task_container"  style="height:100%;" >
@@ -10,21 +10,10 @@
 		    			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom" ng-controller="SlenderTaskProgressCtrl">
 					    	<task-progress progress="progress"></task-progress>
 						</div>
-						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 custom">
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 custom" ng-controller="SlenderCommentCtrl">
 					    	<div task-comments></div>
-						</div>
-						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 custom">
-					    	<div task-attachments></div>
-						</div>
-						<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 custom">
-					    	<div class="panel panel-default fade-in four">
-							  	<div class="panel-heading">More Details</div>
-							  	<div class="panel-body" style="height:300px;">
-							  								    
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 custom">
+						</div>						
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 custom" ng-controller="SlenderUserListCtrl">
 					    	<div task-user-list></div>
 						</div>
 				</div>
