@@ -19,9 +19,9 @@ angular.module('slenderpmApp.register.controller')
           });
       };
 
-      $scope.registerCompany = function (name, surname, userername, email, password) {
-          var registerModel = RegisterService.InitRegisterModule(name, surname, userername, email, password);
-          RegisterService.RegisterUser(registerModel, $scope.RESTURI).then(function (result) {
+      $scope.registerCompany = function (name) {
+          var registerCompanyModel = RegisterService.InitRegisterCompanyModule(name);
+          RegisterService.RegisterCompany(registerCompanyModel, $scope.RESTURI).then(function (result) {
               $scope.result = angular.fromJson(result);
               console.log($scope.result);
               $scope.stage = $scope.stage + 1;

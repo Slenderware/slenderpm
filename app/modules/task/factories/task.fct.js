@@ -2,19 +2,10 @@
 
 /**
  * @ngdoc function
- * @name slenderpmApp.controller:TasksCtrl
+ * @name slenderpmApp.factories:TasksFct
  * @description
- * # TasksCtrl
- * Controller of the slenderpmApp
+ * # TasksTasksFct
+ * Factory of the slenderpmApp
  */
-angular.module('slenderpmApp.task.factory')
- //Factory for LoginModule
-  .factory('TaskModule', function () {
-
-      var LoginModule = function (username, password) {
-          this.username = username;
-          this.password = password;
-      };
-
-      return LoginModule;
-  });
+angular.module('slenderpmApp.task.factory');
+ 

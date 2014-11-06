@@ -13,15 +13,16 @@ angular.module('ngSlenderList.controllers')
   .controller('SlenderTaskListCtrl', ['$scope', '$rootScope', 'ngSlenderListService', function ($scope, $rootScope, ngSlenderListService) {
                 
       $scope.populateTasks = function () {
-          $scope.tasks = angular.fromJson(ngSlenderListService.GetTasks(1));
+          $scope.tasks = angular.fromJson(ngSlenderListService.GetTasks($scope.currentProject.id, $scope.RESTURI));
+          console.log($scope.tasks);
       };
 
       $scope.setCurrentTask = function (task) {
-          $rootScope.currTask = task;
-          console.log($rootScope.currTask.title);
+          $rootScope.currentTask = task;
+          console.log($rootScope.currTask.name);
       };
 
       //$scope.populateSubTasks = func
 
-      $scope.populateTasks();
+      //$scope.populateTasks();
   }]);

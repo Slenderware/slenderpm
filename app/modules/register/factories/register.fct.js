@@ -27,20 +27,12 @@ angular.module('slenderpmApp.register.factory')
       return RegisterModule;
   })
 
-//Factory for RegisterModule
+//Factory for RegisterCompanyModule
   .factory('RegisterCompanyModule', function () {
 
-      var RegisterModule = function (name, surname, userername, email, password) {
-          this.id = 0;
-          this.firstName = name;
-          this.lastName = surname;
-          this.username = userername;
-          this.email = email;
-          this.password = password;
-          this.roleId = 0;
-          this.companyId = 0;
-          this.lastSeen = 0;
+      var RegisterCompanyModule = function (name) {
+          this.name = name;
       };
 
-      return RegisterModule;
+      return RegisterCompanyModule;
   });

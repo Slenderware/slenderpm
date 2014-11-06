@@ -4,10 +4,34 @@
     <a id="selector" data-toggle="tooltip" data-placement="bottom" title="Toggle menu"><i class="fa fa-navicon fa-lg" ng-show="showMenu()"></i></a>            
     <div class="btn-group" ng-show="showMenu()"> 
         <a data-toggle="dropdown" ng-click="getProjects()"><i class="fa fa-cog fa-lg" ></i></a>    
-        <ul class="dropdown-menu" role="menu">   
-        <li ng-repeat="project in projects"><a>{{project.name}}</a></li>                
+        <ul class="dropdown-menu" role="menu">  
+         <div style="cursor:pointer;" data-toggle="modal" data-target="#AddProjModal">
+             <i class="fa fa-plus"></i>Add new Project
+         </div>                   
+         <li ng-repeat="project in projects" ng-click="currentProject(project)" ng-hide="projectsLoading"><a>{{project.name}}</a></li> 
+         <div style="width:100%;overflow:hidden;text-align:center;" ng-show="projectsLoading">
+             <i class="fa fa-circle-o-notch fa-spin"></i>
+         </div>                      
         </ul>
     </div>
     <a ng-click='logout()' style="float:right;"><i class="fa fa-sign-out fa-lg" ></i></a>   
     </div>
 </nav>
+
+<div class="modal fade" id="AddProjModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Create a Project</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" placeholder="Name"></input>        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -18,14 +18,13 @@ angular.module('slenderpmApp.login.controller')
       LoginService.Register();
     };
 
-    $scope.authenticate = function(){  
-        var loginModel = LoginService.InitLoginModule($scope.username, $scope.password);
-        LoginService.Authenticate(loginModel, $scope.RESTURI).then(function (result) {
+    $scope.authenticate = function(){ 
+        LoginService.Authenticate($scope.username, $scope.password, $scope.RESTURI).then(function (result) {
             $scope.result = angular.fromJson(result);
             console.log($scope.result);
             if ($scope.result.success) {
                 $location.path('Tasks');
-                $cookies.session = $scope.result.data;
+                $cookies.session = $scope.result.sessionId;
             }
         });
     }; 	

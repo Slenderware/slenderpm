@@ -9,17 +9,7 @@
  */
 angular.module('slenderpmApp.task.controller')
 
- //Factory for LoginModule
-  .factory('TaskModule', function () {
-
-      var LoginModule = function (username, password) {
-          this.username = username;
-          this.password = password;
-      };
-
-      return LoginModule;
-  })
-
   .controller('TasksCtrl', ['$scope', 'MenuService', function ($scope, MenuService) {
       MenuService.Toggle('Tasks');
+            
   }]);

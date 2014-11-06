@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="styles/tasks.css">
     <link rel="stylesheet" href="styles/gantt.css">
     <link rel="stylesheet" href="styles/login.css">
+    <link href="styles/menu.css" rel="stylesheet" />
     <!-- endbuild -->
   </head>
   <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-cloak>  
@@ -86,6 +87,8 @@
     <script src="bower_components/gantt/codebase/dhtmlxgantt.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+        
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
     <script src="modules/task/submodules/ngSlenderList/ngSlenderList.js"></script>
     <script src="modules/task/submodules/ngSlenderList/directives/ngSlender.directive.js"></script>
@@ -106,7 +109,6 @@
     <script src="modules/task/submodules/ngSlenderUserList/ngSlenderUserList.js"></script>
     <script src="modules/task/submodules/ngSlenderUserList/directives/ngSlender.directive.js"></script>  
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>    
                  
     <!-- Login Module -->

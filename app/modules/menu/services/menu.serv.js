@@ -18,15 +18,13 @@ angular.module('slenderpmApp.menu.service')
           var item2 = new MenuItemModule('Gantt', 'area-chart', false);
           var item3 = new MenuItemModule('Comments', 'comments-o', false);
           var item4 = new MenuItemModule('Resources', 'group', false);
-          //var item5 = new MenuItemModule('Timesheet', 'calendar', false);
-
+      
           var items = [];
           items.push(item1);
           items.push(item2);
           items.push(item3);
           items.push(item4);
-          //items.push(item5);
-
+        
           return items;
       };
       
@@ -36,7 +34,7 @@ angular.module('slenderpmApp.menu.service')
 
           $http({
               method: 'POST',
-              url: uri.concat('projects/getProjects'),
+              url: uri.concat('users/getUserProjects'),
               data: 'sessionId=' + $cookies.session,
               headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
           })
@@ -53,6 +51,11 @@ angular.module('slenderpmApp.menu.service')
           });
 
           return deferred.promise;
+      };
+
+     
+      this.CurrentProject = function (project) {
+          $rootScope.currentProject = project;
       };
 
       this.CurrentMenuItem = function () {

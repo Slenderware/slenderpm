@@ -17,13 +17,13 @@ angular.module('slenderpmApp.login.service')
       };
 
   		//Authenticates user
-  		this.Authenticate = function(LoginModule, uri){	  		    
+  		this.Authenticate = function(username, password, uri){	  		    
   		    var deferred = $q.defer();
   		   
   		    $http({
   		        method: 'POST',
-  		        url: uri.concat('acounts/authentication/authenticate'),
-  		        data: 'username=' + LoginModule.username + '&password=' + LoginModule.password,
+  		        url: uri.concat('accounts/authenticate'),
+  		        data: 'username=' + username + '&password=' + password,
   		        headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
   		    })
             .success(function (data, status, headers, config) {
