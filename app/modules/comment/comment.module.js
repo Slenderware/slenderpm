@@ -11,13 +11,13 @@ angular.module('slenderpmApp.comment.config', [])
 // Modules
 angular.module('slenderpmApp.comment.directive', []);
 angular.module('slenderpmApp.comment.factory', []);
-angular.module('slenderpmApp.comment.service', []);
+angular.module('slenderpmApp.comment.services', []);
 angular.module('slenderpmApp.comment.controller', []);
 angular.module('slenderpmApp.comment',
     [
         'slenderpmApp.comment.config',
         'slenderpmApp.comment.directive',
         'slenderpmApp.comment.factory',
-        'slenderpmApp.comment.service',
+        'slenderpmApp.comment.services',
         'slenderpmApp.comment.controller'
     ]);

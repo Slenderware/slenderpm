@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 /**
  * @ngdoc function
@@ -10,7 +10,7 @@
 angular.module('slenderpmApp.menu.controller')
 
   //Menu Controller
-  .controller('MenuCtrl', function ($rootScope, $scope, MenuService, ngSlenderListService, LoginService, SlenderCommentService) {
+  .controller('MenuCtrl', function ($rootScope, $scope, MenuService, LoginService, Project) {
       $rootScope.menuItems = MenuService.InitMenuItems();
          
       //Set current project and get tasks
@@ -18,13 +18,12 @@ angular.module('slenderpmApp.menu.controller')
 
           $rootScope.currProject = project;
           //Broadcast that default project is initialized
-          $rootScope.$broadcast('current-project-init');                   
+          $rootScope.$broadcast('current-project-init');         
       };
 
       $scope.getUser = function () {
           LoginService.GetUser($scope.RESTURI).then(function (result) {
-              $rootScope.user = angular.fromJson(result);
-              console.log($scope.user);
+              $rootScope.user = angular.fromJson(result);              
           });
       };
 
@@ -43,20 +42,29 @@ angular.module('slenderpmApp.menu.controller')
                   //Indicate that loading is complete
                   $scope.projectsLoading = false;                  
                   $scope.projects = angular.fromJson(data);
-                  $scope.currentProject($scope.projects[0]);                                    
-                  //console.log($scope.projects);
-
+                  $scope.currentProject($scope.projects[0]);  
               });
           }
           else {
-              $scope.projectsLoading = false;
-              console.log('else 2');
+              $scope.projectsLoading = false;            
               $scope.currentProject($scope.currProject);
           }
       };
-          
 
+      //Adds Project
+      $scope.addProject = function () {          
+          $scope.projectDto = new Project($scope.user.id, $scope.user.id, $scope.projectName, $scope.projectDescription, $scope.startDate, $scope.endDate);
+          MenuService.AddProjects($scope.projectDto, $scope.RESTURI).then(function (data) {
+
+          });
+      };
       
+      $scope.$on('load-Tasks', function (event, args) {         
+          setTimeout(function () { $rootScope.$broadcast('current-project-init'); }, 100);
+                 
+      });
+      
+      //$rootScope.
       $rootScope.currMenuItem = MenuService.CurrentMenuItem();
       $rootScope.toggle = function (name) { MenuService.Toggle(name); };
       $rootScope.showMenu = function () { return MenuService.ShowMenu(); };

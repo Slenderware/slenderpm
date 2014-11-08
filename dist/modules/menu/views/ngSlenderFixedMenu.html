@@ -3,7 +3,7 @@
     <img class="logothumb" logo src='modules/menu/res/logo.png'></img>
     <a id="selector" data-toggle="tooltip" data-placement="bottom" title="Toggle menu"><i class="fa fa-navicon fa-lg" ng-show="showMenu()"></i></a>            
     <div class="btn-group" ng-show="showMenu()"> 
-        <a data-toggle="dropdown" ng-click="getProjects()"><i class="fa fa-cog fa-lg" ></i></a>    
+        <a data-toggle="dropdown" ng-click="getProjects()"><h4>{{currProject.name}}</h4></a>    
         <ul class="dropdown-menu" role="menu">  
          <div style="cursor:pointer;" data-toggle="modal" data-target="#AddProjModal">
              <i class="fa fa-plus"></i>Add new Project
@@ -26,12 +26,16 @@
         <h4 class="modal-title">Create a Project</h4>
       </div>
       <div class="modal-body">
-        <input type="text" class="form-control" placeholder="Name"></input>        
+        <input type="text" class="form-control" placeholder="Name" ng-model="projectName"></input>      
+        <input type="text" class="form-control" placeholder="Description" ng-model="projectDescription"></input>  
+        <input type="text" class="form-control" id="datepicker1" placeholder="Start date" ng-model="startDate"></input>     
+        <input type="text" class="form-control" id="datepicker2" placeholder="End date" ng-model="endDate"></input>     
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" ng-click="addProject()">Add Project</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+

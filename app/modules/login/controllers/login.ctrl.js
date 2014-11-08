@@ -20,8 +20,7 @@ angular.module('slenderpmApp.login.controller')
 
     $scope.authenticate = function(){ 
         LoginService.Authenticate($scope.username, $scope.password, $scope.RESTURI).then(function (result) {
-            $scope.result = angular.fromJson(result);
-            console.log($scope.result);
+            $scope.result = angular.fromJson(result);           
             if ($scope.result.success) {
                 $location.path('Tasks');
                 $cookies.session = $scope.result.sessionId;              

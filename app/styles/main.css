@@ -13,6 +13,10 @@ body {
     border-radius: 0px; 
 }
 
+.form-control {
+    margin-top: 1em;
+}
+
 /*Input fields*/
 .has-error ::-webkit-input-placeholder { /* WebKit browsers */
     color:    #a94442 !important;

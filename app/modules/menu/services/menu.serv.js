@@ -53,6 +53,31 @@ angular.module('slenderpmApp.menu.service')
           return deferred.promise;
       };
 
+      //Adds Projects 
+      this.AddProjects = function (project, uri) {
+          var deferred = $q.defer();
+
+          $http({
+              method: 'POST',
+              url: uri.concat('projects/addProject'),
+              data: JSON.stringify(project),
+              headers: { 'Content-Type': 'application/json;' }
+          })
+          .success(function (data, status, headers, config) {
+              // this callback will be called asynchronously
+              // when the response is available   
+
+              deferred.resolve(data);
+          }).
+          error(function (data, status, headers, config) {
+              // called asynchronously if an error occurs
+              // or server returns response with an error status.               
+              deferred.resolve(data);
+          });
+
+          return deferred.promise;
+      };
+
      
       this.CurrentProject = function (project) {
           $rootScope.currentProject = project;
@@ -60,11 +85,11 @@ angular.module('slenderpmApp.menu.service')
 
       this.CurrentMenuItem = function () {
           for (var i = 0; i < $rootScope.menuItems.length; i++) {
-              if ($rootScope.menuItems[i].selected) {
+              if ($rootScope.menuItems[i].selected) {                       
                   return $rootScope.menuItems[i];
               }
           }
-      };
+      };      
 
       this.ShowMenu = function () {
           if ($cookies.session !== undefined) {
@@ -83,6 +108,8 @@ angular.module('slenderpmApp.menu.service')
               if (name === $rootScope.menuItems[i].name) {
                   $rootScope.menuItems[i].selected = true;
                   $rootScope.currMenuItem = $rootScope.menuItems[i];
+                  $rootScope.$broadcast('load-' + name);
+                  console.log('load-' + name);
                   $location.path($rootScope.currMenuItem.name);
               }
               else {

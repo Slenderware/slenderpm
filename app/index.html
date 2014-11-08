@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html class="no-js">
   <head>
     <meta charset="utf-8">
@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="bower_components/jqtree/jqtree.css" />
     <link rel="stylesheet" href="bower_components/angular-gantt/assets/gantt.css" />
     <link rel="stylesheet" href="bower_components/gantt/codebase/dhtmlxgantt.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/css/datepicker3.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -85,6 +87,7 @@
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
     <script src="bower_components/gantt/codebase/dhtmlxgantt.js"></script>
+    <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
         
@@ -92,26 +95,18 @@
 
     <script src="modules/task/submodules/ngSlenderComments/ngSlenderComments.js"></script>
     <script src="modules/task/submodules/ngSlenderComments/directives/ngSlender.directive.js"></script>
-    <script src="modules/task/submodules/ngSlenderComments/services/ngSlender.serv.js"></script>
-    <script src="modules/task/submodules/ngSlenderComments/controllers/ngSlender.ctrl.js"></script>
 
     <script src="modules/task/submodules/ngSlenderList/ngSlenderList.js"></script>
     <script src="modules/task/submodules/ngSlenderList/directives/ngSlender.directive.js"></script>
-    <script src="modules/task/submodules/ngSlenderList/services/ngSlender.serv.js"></script>
-    <script src="modules/task/submodules/ngSlenderList/controllers/ngSlender.ctrl.js"></script>
 
     <script src="modules/task/submodules/ngSlenderProgress/ngSlenderProgress.js"></script>
     <script src="modules/task/submodules/ngSlenderProgress/directives/ngSlender.directive.js"></script>
-    <script src="modules/task/submodules/ngSlenderProgress/services/ngSlender.serv.js"></script>
-    <script src="modules/task/submodules/ngSlenderProgress/controllers/ngSlender.ctrl.js"></script>
 
     <script src="modules/task/submodules/ngSlenderAttachments/ngSlenderAttachments.js"></script>
     <script src="modules/task/submodules/ngSlenderAttachments/directives/ngSlender.directive.js"></script>
 
     <script src="modules/task/submodules/ngSlenderUserList/ngSlenderUserList.js"></script>
-    <script src="modules/task/submodules/ngSlenderUserList/directives/ngSlender.directive.js"></script>  
-    <script src="modules/task/submodules/ngSlenderUserList/services/ngSlender.serv.js"></script>
-    <script src="modules/task/submodules/ngSlenderUserList/controllers/ngSlender.ctrl.js"></script>
+    <script src="modules/task/submodules/ngSlenderUserList/directives/ngSlender.directive.js"></script> 
 
     <script src="scripts/app.js"></script>    
                  
@@ -148,6 +143,8 @@
 
     <!-- Comment Module -->
     <script src="modules/comment/comment.module.js"></script>
+    <script src="modules/comment/services/comment.serv.js"></script>
+    <script src="modules/comment/controllers/comment.ctrl.js"></script>    
        
     <!-- Resource Module -->
     <script src="modules/resource/resource.module.js"></script>

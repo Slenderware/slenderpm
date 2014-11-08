@@ -7,9 +7,4 @@
  * # ngSlenderProgressService
  * Service of the ngSlenderProgress
  */
-angular.module('ngSlenderProgress.services')
-
-  //Service called ngSlenderProgressService
-  .service('ngSlenderProgressService', function () {
-     
-    });
+angular.module('ngSlenderProgress.services');

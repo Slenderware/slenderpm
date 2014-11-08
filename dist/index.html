@@ -1,13 +1,51 @@
-<!doctype html> <html class="no-js"> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.b7ba042e.css"> <link rel="stylesheet" href="styles/main.36f8c7de.css">  <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-cloak> <!--[if lt IE 7]>
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">    
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="styles/vendor.04a44ebe.css">
+    <link rel="stylesheet" href="styles/main.1a3bb08b.css">
+  </head>
+  <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-init="getProjects()" ng-cloak">  
+    <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--> <div style="width:100%;height:100%;overflow:hidden"> <slender-top-menu></slender-top-menu> <div class="content"> <slender-menu></slender-menu> <slender-bread-crumb></slender-bread-crumb> <div class="mainView" style="height:100%"> <div ng-view="" style="overflow-y:auto;height:100%"></div> </div> </div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    <![endif]-->
+    <div style="width:100%;height:100%;overflow:hidden;" >
+       <slender-top-menu></slender-top-menu>
+        <div class="content">            
+            <slender-menu></slender-menu>
+            <slender-bread-crumb></slender-bread-crumb>
+            <div class="mainView" style="height:100%;">
+                <div ng-view="" style="overflow-y:auto;height:100%;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
        ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');</script> <!--[if lt IE 9]>
+       ga('send', 'pageview');
+    </script>
+
+    <!--[if lt IE 9]>
     <script src="scripts/oldieshim.ff90b0fb.js"></script>
-    <![endif]--> <script>window.paceOptions = {
+    <![endif]-->
+
+    <script>
+        window.paceOptions = {
           target: '.mainView'
-        }</script> <script src="scripts/vendor.60bf3406.js"></script> <script src="scripts/scripts.985335df.js"></script>  
+        }
+    </script>
+    <script src="scripts/vendor.2eaf378a.js"></script>
+        
+    <script src="scripts/scripts.639a2985.js"></script>
+</body>
+</html>

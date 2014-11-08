@@ -1,6 +1,6 @@
-﻿<div class="panel panel-default fade-in five">
+﻿<div class="panel panel-default fade-in three">
 	<div class="panel-heading">Users</div>		
-	<div class="panel-body" style="height:580px;overflow:auto;">
+	<div class="panel-body" style="height:600px;overflow:auto;">
         <ul class="media-list">
             <li class="media" ng-repeat="user in users">
                 <a class="pull-left" href="#">
@@ -12,12 +12,12 @@
             </li>               
         </ul>
 	</div>
-    <div class="panel-footer">
-        <form role="form">
-            <div class="form-group">
-                <input type="text" class="form-control" id="txtComment" placeholder="Enter email..." style="width:80%;float:left;">
-            </div>
-            <button type="submit" class="btn btn-default" style="float:right;margin-top: 0em;margin-bottom:1em;">Add User</button>
-        </form>
+    <div class="panel-footer">        
+        <div class="input-group">
+          <input type="text" class="form-control" id="txtComment" placeholder="Enter email..." style="margin-top:0px;">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default" style="float:right;margin-top: 0em;">Add User</button>
+          </span>
+        </div><!-- /input-group -->
     </div>				  								    
 </div>
