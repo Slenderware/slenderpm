@@ -16,7 +16,12 @@ describe('Controller: LoginCtrl', function () {
     });
   })); 
 
-  it('loginModule username not initialiazed', function () {
-      expect(1).toBe(1);
+  it('loginModule username is initialiazed before start', function () {
+      expect(scope.username).toBe(undefined);
+  });
+
+  it('loginModule username failed to initialize', function () {
+      scope.username = 'dummy';
+      expect(scope.username).toBe('dummy');
   });
 });

@@ -108,7 +108,7 @@ angular.module('slenderpmApp.menu.service')
               if (name === $rootScope.menuItems[i].name) {
                   $rootScope.menuItems[i].selected = true;
                   $rootScope.currMenuItem = $rootScope.menuItems[i];
-                  $rootScope.$broadcast('load-' + name);
+                  setTimeout(function () { $rootScope.$broadcast('load-' + name); }, 100);
                   console.log('load-' + name);
                   $location.path($rootScope.currMenuItem.name);
               }

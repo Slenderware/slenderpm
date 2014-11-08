@@ -21,6 +21,6 @@ angular.module('slenderpmApp.comment.controller')
 
       $scope.$on('load-Comments', function (event, args) {
           console.log('sdf');
-          setTimeout(function () { $scope.getComments(); }, 100);
+          $scope.getComments(); 
       });
   });

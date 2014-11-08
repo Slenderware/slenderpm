@@ -26,7 +26,7 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',      
-      'app/scripts.app.js',
+      'app/scripts/app.js',
       'app/modules/login/*.js',     
       'app/modules/register/*.js',
       'app/modules/task/*.js',
