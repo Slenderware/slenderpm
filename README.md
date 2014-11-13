@@ -5,7 +5,6 @@ SlenderPM
 [![devDependency Status](https://david-dm.org/slenderware/slenderpm/dev-status.svg)](https://david-dm.org/slenderware/slenderpm#info=devDependencies)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Slenderware/slenderpm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-![alt text](http://www.slenderware.co.za/img/slenderman.png "Logo Title Text 1")
 
 Slenderware was created for the purpose of bridging the divide between the project and the customer. 
 Part of the Slenderware Management System is to track a project every step of the way. 
