@@ -17,7 +17,7 @@ Demo
 
 Dependencies
 -----------
-angular: 1.2.16
+angular: 1.2.16--
 json3: ~3.3.1
 es5-shim: ~3.1.0
 bootstrap: ~3.2.0
