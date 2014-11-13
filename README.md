@@ -15,6 +15,28 @@ Demo
 
 <a href="http://slenderware.github.io/slenderpm/">Click here</a> to see the demo. Use username: admin. password: admin as login credentials.
 
+Dependencies
+-----------
+angular: 1.2.16
+json3: ~3.3.1
+es5-shim: ~3.1.0
+bootstrap: ~3.2.0
+angular-resource: 1.2.16
+angular-cookies: 1.2.16
+angular-sanitize: 1.2.16
+angular-animate: 1.2.16
+angular-touch: 1.2.16
+angular-route: 1.2.16
+slendermenu: *
+slender-ui: *
+font-awesome: *
+pace: ~1.0.1
+underscore: ~1.7.0
+angular-gantt: ~0.6.4
+moment: ~2.8.3
+angular-moment: ~0.8.2
+gantt: ~3.0.0
+
 Development
 -----------
 This website is built using grunt, node.js and bower package manager. Ensure that you have all these installed on your development environment.
