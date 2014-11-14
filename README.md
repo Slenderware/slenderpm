@@ -1,7 +1,6 @@
 SlenderPM
 =========
-![alt tag](https://travis-ci.org/Slenderware/slenderpm.png)
-![alt tag](https://david-dm.org/slenderware/slenderpm.png)
+[![alt tag](https://travis-ci.org/Slenderware/slenderpm.png)](https://travis-ci.org/Slenderware/slenderpm)
 [![devDependency Status](https://david-dm.org/slenderware/slenderpm/dev-status.svg)](https://david-dm.org/slenderware/slenderpm#info=devDependencies)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Slenderware/slenderpm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
