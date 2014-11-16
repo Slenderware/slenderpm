@@ -1,9 +1,9 @@
 SlenderPM
 =========
-![alt tag](https://travis-ci.org/Slenderware/slenderpm.png)
-![alt tag](https://david-dm.org/slenderware/slenderpm.png)
+[![alt tag](https://travis-ci.org/Slenderware/slenderpm.png)](https://travis-ci.org/Slenderware/slenderpm)
 [![devDependency Status](https://david-dm.org/slenderware/slenderpm/dev-status.svg)](https://david-dm.org/slenderware/slenderpm#info=devDependencies)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Slenderware/slenderpm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 
 Slenderware was created for the purpose of bridging the divide between the project and the customer. 
 Part of the Slenderware Management System is to track a project every step of the way. 
@@ -14,6 +14,46 @@ Demo
 -----------
 
 <a href="http://slenderware.github.io/slenderpm/">Click here</a> to see the demo. Use username: admin. password: admin as login credentials.
+
+Dependencies
+-----------
+>angular: 1.2.16
+
+>json3: ~3.3.1
+
+>es5-shim: ~3.1.0
+
+>bootstrap: ~3.2.0
+
+>angular-resource: 1.2.16
+
+>angular-cookies: 1.2.16
+
+>angular-sanitize: 1.2.16
+
+>angular-animate: 1.2.16
+
+>angular-touch: 1.2.16
+
+>angular-route: 1.2.16
+
+>slendermenu: *
+
+>slender-ui: *
+
+>font-awesome: *
+
+>pace: ~1.0.1
+
+>underscore: ~1.7.0
+
+>angular-gantt: ~0.6.4
+
+>moment: ~2.8.3
+
+>angular-moment: ~0.8.2
+
+>gantt: ~3.0.0
 
 Development
 -----------
