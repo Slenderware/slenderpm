@@ -18,8 +18,7 @@ angular.module('slenderpmApp.login.service')
 
   		//Authenticates user
   		this.Authenticate = function(username, password, uri){	  		    
-  		    var deferred = $q.defer();
-  		   
+  		    var deferred = $q.defer();  		  
   		    $http({
   		        method: 'POST',
   		        url: uri.concat('accounts/authenticate'),

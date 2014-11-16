@@ -16,12 +16,35 @@ describe('Controller: LoginCtrl', function () {
     });
   })); 
 
+    //UI Tests
   it('loginModule username is initialiazed before start', function () {
       expect(scope.username).toBe(undefined);
+  });
+
+  it('loginModule password is initialiazed before start', function () {
+      expect(scope.password).toBe(undefined);
   });
 
   it('loginModule username failed to initialize', function () {
       scope.username = 'dummy';
       expect(scope.username).toBe('dummy');
   });
+
+  it('loginModule password failed to initialize', function () {
+      scope.password = 'dummy';
+      expect(scope.password).toBe('dummy');
+  });
+
+    //Server Tests
+  it('loginModule failed to login to server with dummy details', function () {
+      scope.username = 'dummy';
+      scope.password = 'dummy';
+      scope.authenticate();
+
+      scope.$on('loggingIn', function (event, args) {         
+          expect(scope.result.success).toBe(true);
+      }); 
+  });
+
+  
 });

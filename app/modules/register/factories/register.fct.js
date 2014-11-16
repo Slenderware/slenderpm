@@ -12,18 +12,16 @@ angular.module('slenderpmApp.register.factory')
 //Factory for RegisterModule
   .factory('RegisterModule', function () {
 
-      var RegisterModule = function (name, surname, userername, email, password) {
-          this.id = null;
+      var RegisterModule = function (name, surname, userername, email, password, companyid) {          
           this.firstName = name;
           this.lastName = surname;
           this.username = userername;
-          this.email = email;
           this.password = password;
-          this.roleId = null;
-          this.companyId = null;
-          this.lastSeen = null;
-      };
+          this.email = email;          
+          this.roleId = 1;
+          this.companyId = companyid;
 
+      };     
       return RegisterModule;
   })
 

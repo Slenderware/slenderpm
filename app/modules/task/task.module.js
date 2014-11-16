@@ -16,7 +16,7 @@ angular.module('slenderpmApp.task.controller', []);
 angular.module('slenderpmApp.task',
     [
         'ngSlenderUserList',
-        'ngSlenderAttachments',
+        'ngSlenderContribGraph',
         'ngSlenderComments',
         'ngSlenderProgress',
         'ngSlenderList',

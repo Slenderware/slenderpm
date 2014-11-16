@@ -17,7 +17,9 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',    
+    'ngTouch',
+    'ui.date',
+    'angularCharts',
     'slenderpmApp.login',
     'slenderpmApp.register',
     'slenderpmApp.task',
@@ -29,7 +31,7 @@ angular
 
     .run(function ($rootScope) {
         // start using constants module
-        $rootScope.RESTURI = 'http://www.slenderware.co.za/slenderware-webservice-rest/webresources/';
+        $rootScope.RESTURI = 'http://10.0.0.7:8084/slenderware-webservice-rest/webresources/';
         $rootScope.HEADERS = {  'Access-Control-Allow-Origin' : '*',
                                 'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
                                 'Content-Type': 'application/json',
@@ -75,11 +77,11 @@ angular
           templateUrl: 'modules/gantt/views/gantt.html',
         controller: 'GanttCtrl'
       })
-      .when('/Comments', {
+      .when('/Project Comments', {
           templateUrl: 'modules/comment/views/comments.html',
         controller: 'CommentsCtrl'
       })
-      .when('/Resources', {
+      .when('/Project Resources', {
           templateUrl: 'modules/resource/views/resources.html',
         controller: 'ResourcesCtrl'
       })

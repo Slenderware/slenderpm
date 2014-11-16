@@ -18,6 +18,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+      <link rel="stylesheet" href="styles/register.css">
     <link rel="stylesheet" href="styles/pace.css">
     <link rel="stylesheet" href="styles/tasks.css">
     <link rel="stylesheet" href="styles/gantt.css">
@@ -25,17 +26,17 @@
     <link href="styles/menu.css" rel="stylesheet" />
     <!-- endbuild -->
   </head>
-  <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-init="getProjects()" ng-cloak">  
+  <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-cloak">  
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div style="width:100%;height:100%;overflow:hidden;" >
+    <div style="width:100%;height:100%;overflow:hidden;">
        <slender-top-menu></slender-top-menu>
         <div class="content">            
             <slender-menu></slender-menu>
             <slender-bread-crumb></slender-bread-crumb>
             <div class="mainView" style="height:100%;">
-                <div ng-view="" style="overflow-y:auto;height:100%;"></div>
+                <div ng-view="" style="overflow-y:auto;height:100%;" id="main"></div>
             </div>
         </div>
     </div>
@@ -83,6 +84,10 @@
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
     <script src="bower_components/gantt/codebase/dhtmlxgantt.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-date/src/date.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/angular-charts/dist/angular-charts.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
         
@@ -97,8 +102,8 @@
     <script src="modules/task/submodules/ngSlenderProgress/ngSlenderProgress.js"></script>
     <script src="modules/task/submodules/ngSlenderProgress/directives/ngSlender.directive.js"></script>
 
-    <script src="modules/task/submodules/ngSlenderAttachments/ngSlenderAttachments.js"></script>
-    <script src="modules/task/submodules/ngSlenderAttachments/directives/ngSlender.directive.js"></script>
+    <script src="modules/task/submodules/ngSlenderContribGraph/ngSlenderContribGraph.js"></script>
+    <script src="modules/task/submodules/ngSlenderContribGraph/directives/ngSlender.directive.js"></script>
 
     <script src="modules/task/submodules/ngSlenderUserList/ngSlenderUserList.js"></script>
     <script src="modules/task/submodules/ngSlenderUserList/directives/ngSlender.directive.js"></script> 
@@ -113,6 +118,7 @@
       
     <!-- Register Module -->
     <script src="modules/register/register.module.js"></script>
+    <script src="modules/register/directives/register.directive.js"></script> 
     <script src="modules/register/factories/register.fct.js"></script>
     <script src="modules/register/services/register.serv.js"></script>
     <script src="modules/register/controllers/register.ctrl.js"></script> 

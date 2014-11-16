@@ -7,19 +7,19 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="stylesheet" href="styles/vendor.7a5eedb2.css">
-    <link rel="stylesheet" href="styles/main.7fc502ee.css">
+    <link rel="stylesheet" href="styles/main.868fae56.css">
   </head>
-  <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-init="getProjects()" ng-cloak">  
+  <body ng-app="slenderpmApp" ng-controller="MenuCtrl" ng-cloak">  
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div style="width:100%;height:100%;overflow:hidden;" >
+    <div style="width:100%;height:100%;overflow:hidden;">
        <slender-top-menu></slender-top-menu>
         <div class="content">            
             <slender-menu></slender-menu>
             <slender-bread-crumb></slender-bread-crumb>
             <div class="mainView" style="height:100%;">
-                <div ng-view="" style="overflow-y:auto;height:100%;"></div>
+                <div ng-view="" style="overflow-y:auto;height:100%;" id="main"></div>
             </div>
         </div>
     </div>
@@ -44,8 +44,8 @@
           target: '.mainView'
         }
     </script>
-    <script src="scripts/vendor.b642e907.js"></script>
+    <script src="scripts/vendor.e3274c29.js"></script>
         
-    <script src="scripts/scripts.92895a3b.js"></script>
+    <script src="scripts/scripts.38ce179a.js"></script>
 </body>
 </html>

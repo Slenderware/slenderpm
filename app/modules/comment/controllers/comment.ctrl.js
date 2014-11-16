@@ -10,17 +10,23 @@
 angular.module('slenderpmApp.comment.controller')
   .controller('CommentsCtrl', function ($scope, MenuService, ProjectCommentService) {
 
-      MenuService.Toggle('Comments');
+      MenuService.Toggle('Project Comments');
 
-      $scope.getComments = function () {
-          ProjectCommentService.GetComments($scope.currProject.id, $scope.RESTURI).then(function (result) {
-              $scope.comments = angular.fromJson(result);
-              console.log($scope.comments);
+      $scope.addComment = function (comment) {
+          var comment = ProjectCommentService.InitProjectComment($scope.user.id, $scope.currProject.id, comment);              
+          ProjectCommentService.AddComment(comment, $scope.RESTURI).then(function (result) {
+              $scope.comment = undefined;           
+              $scope.getComments();
           });
       };
 
-      $scope.$on('load-Comments', function (event, args) {
-          console.log('sdf');
+      $scope.getComments = function () {
+          ProjectCommentService.GetComments($scope.currProject.id, $scope.RESTURI).then(function (result) {
+              $scope.comments = angular.fromJson(result);            
+          });
+      };
+
+      $scope.$on('current-project-init', function (event, args) {
           $scope.getComments(); 
       });
   });

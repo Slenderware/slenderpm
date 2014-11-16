@@ -1,69 +1,70 @@
 <div class="container-fluid main" style="padding-left:0px;padding-right:0px;">
 	
 	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-	<div class="row main" style="margin-top:20%;">	
+	<div class="row main">	
 	  <div class="col-md-3 col-sm-2 col-xs-0 col-lg-4" ></div>	 
 	  <div class="col-md-6 col-sm-8 col-xs-12 col-lg-4" id="loginContainer">
-          <div class="panel panel-default" id="cmpRegBox" ng-hide="stage!==0">
-	  			<div class="panel-heading" style="text-align:center;">
-		  			<h1><i class="fa fa-building-o" style="margin-right:1em;"></i>Company Registration</h1>
-		  		</div>
-			  	<div class="panel-body">                    
-			    	<form role="form">
-					  <div ng-class="validate(name) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
-					    <label for="exampleInputEmail1">Company Name</label>
-					    <input type="text" class="form-control" id="Text1" placeholder="Company Name" ng-model="name">
-                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(name)"></span>
-					  </div>					         					
-					  <div ng-class="result.success ? 'alert alert-success' : 'alert alert-danger'" ng-hide="result === undefined" role="alert">{{result.message}}</div>
-					</form>
-			  	</div>
-			  	<div class="panel-footer">			  		
-					<button type="submit" class="btn btn-primary" style="float:right;" ng-click="registerCompany(name, surname, username, email, password)" ng-disabled="!validate(name) || name === undefined">Register</button>
-					<button type="submit" class="btn btn-default" style="float:right;" ng-click="back()">Back</button>
-			  	</div>
+          <div class="panel panel-default fade-down" id="cmpRegBox" ng-hide="stage!==0" style="margin-top:50%;">
+	  	      <form role="form">
+                  <div class="panel-heading" style="text-align:center;">
+		  			    <h1><i class="fa fa-building-o" style="margin-right:1em;"></i>Company Registration</h1>
+		  		    </div>
+			  	    <div class="panel-body">  
+					    <div ng-class="validate(name) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+					        <label for="exampleInputEmail1">Company Name</label>
+					        <input type="text" class="form-control" id="Text1" placeholder="Company Name" ng-model="name">
+                            <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(name)"></span>
+					        </div>					         					
+					    <div ng-class="result.success ? 'alert alert-success' : 'alert alert-danger'" ng-hide="message === undefined" role="alert">{{message}}</div>					
+			  	    </div>
+			  	    <div class="panel-footer">			  		
+					    <input type="submit" class="btn btn-primary" style="float:right;" ng-click="registerCompany(name)" ng-disabled="!validate(name) || name === undefined" value="Register Company"></input>
+					    <button type="submit" class="btn btn-default" style="float:right;" ng-click="back()">Back</button>
+			  	        <i class="fa fa-circle-o-notch fa-spin fa-2x" style="float:right;margin-right:0.3em;margin-top:0.3em;" ng-show="registerLoading"></i>
+                    </div>
+                </form>
 			</div>
-	  		<div class="panel panel-default" id="registerBox" ng-hide="stage!==1">
-	  			<div class="panel-heading" style="text-align:center;">
+	  		<div class="panel panel-default fade-down" id="registerBox" ng-hide="stage!==1" style="margin-top:20%;">
+	  			<form role="form" name="passwordForm">
+                <div class="panel-heading" style="text-align:center;">
 		  			<h1><i class="fa fa-user" style="margin-right:1em;"></i>Registration</h1>
 		  		</div>
-			  	<div class="panel-body">                    
-			    	<form role="form">
-					  <div ng-class="validate(name) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
-					    <label for="exampleInputEmail1">Name</label>
-					    <input type="text" class="form-control" id="txtEmail" placeholder="Name" ng-model="name">
-                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(name)"></span>
-					  </div>
-					  <div ng-class="validate(surname) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
-					    <label for="exampleInputPassword1">Surname</label>
-					    <input type="text" class="form-control" id="txtPassword" placeholder="Surname" ng-model="surname">
-                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(surname)"></span>
-					  </div>
-                      <div ng-class="validate(username) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
-					    <label for="exampleInputPassword1">Username</label>
-					    <input type="text" class="form-control" id="Password1" placeholder="Username" ng-model="username">
-                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(username)"></span>
-					  </div>  
-					  <div ng-class="validate(email) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
-					    <label for="exampleInputPassword1">Email</label>
-					    <input type="text" class="form-control" id="txtPasswordConfirm" placeholder="Email" ng-model="email">
-                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(email)"></span>
-					  </div>        
-                      <div ng-class="validate(password) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
-					    <label for="txtPassword">Password</label>
-					    <input type="password" class="form-control" id="txtPassword" placeholder="Password" ng-model="password">
-                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(password)"></span>
-					  </div>   
-                      <div ng-class="validate(confirmPassword) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
-					    <label for="txtConfirmPassword">Confirm Password</label>
-					    <input type="password" class="form-control" id="txtConfirmPassword" placeholder="Confirm Password" ng-model="confirmPassword">
-                        <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(confirmPassword)"></span>
-					  </div>                 					
-					  	<div ng-class="result.success ? 'alert alert-success' : 'alert alert-danger'" ng-hide="result === undefined" role="alert">{{result.message}}</div>
-					</form>
-			  	</div>
+			  	<div class="panel-body">   
+					      <div ng-class="validate(name) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+					        <label for="exampleInputEmail1">Name</label>
+					        <input type="text" class="form-control" id="txtEmail" placeholder="Name" ng-model="name">
+                            <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(name)"></span>
+					      </div>
+					      <div ng-class="validate(surname) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+					        <label for="exampleInputPassword1">Surname</label>
+					        <input type="text" class="form-control" id="txtPassword" placeholder="Surname" ng-model="surname">
+                            <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(surname)"></span>
+					      </div>
+                          <div ng-class="validate(username) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+					        <label for="exampleInputPassword1">Username</label>
+					        <input type="text" class="form-control" id="Password1" placeholder="Username" ng-model="username">
+                            <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(username)"></span>
+					      </div>  
+					      <div ng-class="validate(email) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+					        <label for="exampleInputPassword1">Email</label>
+					        <input type="text" class="form-control" id="txtPasswordConfirm" placeholder="Email" ng-model="email">
+                            <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(email)"></span>
+					      </div>        
+                          <div ng-class="validate(password) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+					        <label for="txtPassword">Password</label>
+					        <input type="password" class="form-control" id="txtPassword" placeholder="Password" ng-model="password" name="password" password-strength="password">
+                            <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(password)"></span>
+                            <span class="help-inline" data-ng-show='passwordForm.password.$valid && passwordForm.password.$dirty' data-ng-class="strength">This password is {{strength}} ! </span>
+					      </div>   
+                          <div ng-class="validate(confirmPassword) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+					        <label for="txtConfirmPassword">Confirm Password</label>
+					        <input type="password" class="form-control" id="txtConfirmPassword" placeholder="Confirm Password" ng-model="confirmPassword">
+                            <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(confirmPassword)"></span>
+					      </div>                 					
+					  	    <div ng-class="result.success ? 'alert alert-success' : 'alert alert-danger'" ng-hide="message === undefined" role="alert">{{message}}</div>
+                        </div>
 			  	<div class="panel-footer">			  		
-					<button type="submit" class="btn btn-primary" style="float:right;" ng-click="registerCompany(name, surname, username, email, password)" ng-disabled="!validate(name) || 
+					<input type="submit" class="btn btn-primary" style="float:right;" value="Register" ng-click="registerAdminUser(name, surname, username, email, password, confirmPassword)" ng-disabled="!validate(name) || 
                                                                                                                                                   !validate(surname) || 
                                                                                                                                                   !validate(username) ||
                                                                                                                                                   !validate(email) || 
@@ -74,9 +75,11 @@
                                                                                                                                                   username === undefined || 
                                                                                                                                                   email === undefined ||
                                                                                                                                                   password === undefined || 
-                                                                                                                                                  confirmPassword === undefined">Register</button>
+                                                                                                                                                  confirmPassword === undefined"></input>
 					<button type="submit" class="btn btn-default" style="float:right;" ng-click="back()">Back</button>
+                    <i class="fa fa-circle-o-notch fa-spin fa-2x" style="float:right;margin-right:0.3em;margin-top:0.3em;" ng-show="registerLoading"></i>
 			  	</div>
+                </form>
 			</div>
 	  		</div>
 	  </div>	  

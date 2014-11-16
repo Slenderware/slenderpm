@@ -16,8 +16,8 @@ angular.module('slenderpmApp.menu.service')
       this.InitMenuItems = function () {
           var item1 = new MenuItemModule('Tasks', 'tasks', true);
           //var item2 = new MenuItemModule('Gantt', 'area-chart', false);
-          var item3 = new MenuItemModule('Comments', 'comments-o', false);
-          var item4 = new MenuItemModule('Resources', 'group', false);
+          var item3 = new MenuItemModule('Project Comments', 'comments-o', false);
+          var item4 = new MenuItemModule('Project Resources', 'group', false);
       
           var items = [];
           items.push(item1);
@@ -55,13 +55,12 @@ angular.module('slenderpmApp.menu.service')
 
       //Adds Projects 
       this.AddProjects = function (project, uri) {
-          var deferred = $q.defer();
-
+          var deferred = $q.defer();         
           $http({
               method: 'POST',
               url: uri.concat('projects/addProject'),
-              data: JSON.stringify(project),
-              headers: { 'Content-Type': 'application/json;' }
+              data: 'projectName=' + project.projectName + '&projectDescription=' + project.projectDescription + '&startDate=' + '2014-11-08' + '&endDate=' + '2014-11-09' + '&projectCreator=' + $rootScope.user.id + '&projectManager=' + $rootScope.user.id,
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
           })
           .success(function (data, status, headers, config) {
               // this callback will be called asynchronously
@@ -108,8 +107,7 @@ angular.module('slenderpmApp.menu.service')
               if (name === $rootScope.menuItems[i].name) {
                   $rootScope.menuItems[i].selected = true;
                   $rootScope.currMenuItem = $rootScope.menuItems[i];
-                  setTimeout(function () { $rootScope.$broadcast('load-' + name); }, 100);
-                  console.log('load-' + name);
+                  setTimeout(function () { $rootScope.$broadcast('load-' + name); }, 100);                
                   $location.path($rootScope.currMenuItem.name);
               }
               else {

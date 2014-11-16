@@ -12,19 +12,15 @@ angular.module('slenderpmApp.menu.controller')
   //Menu Controller
   .controller('MenuCtrl', function ($rootScope, $scope, MenuService, LoginService, Project) {
       $rootScope.menuItems = MenuService.InitMenuItems();
-         
-      //Set current project and get tasks
-      $scope.currentProject = function (project) {         
-
-          $rootScope.currProject = project;
-          //Broadcast that default project is initialized
-          $rootScope.$broadcast('current-project-init');         
-      };
-
+               
       $scope.getUser = function () {
-          LoginService.GetUser($scope.RESTURI).then(function (result) {
-              $rootScope.user = angular.fromJson(result);              
-          });
+          if ($scope.user === undefined) {
+              LoginService.GetUser($scope.RESTURI).then(function (result) {
+                  $rootScope.user = angular.fromJson(result);
+
+                  $rootScope.$broadcast('current-user-init');
+              });
+          }
       };
 
       //Checks to see if user is authenticated
@@ -36,8 +32,7 @@ angular.module('slenderpmApp.menu.controller')
           
           //Indicate that loading has started
           $scope.projectsLoading = true;
-          if ($scope.projects === undefined) {
-              console.log(2);
+          if ($scope.projects === undefined) {              
               MenuService.GetProjects($scope.RESTURI).then(function (data) {
                   //Indicate that loading is complete
                   $scope.projectsLoading = false;                  
@@ -46,28 +41,89 @@ angular.module('slenderpmApp.menu.controller')
               });
           }
           else {
+              //Indicate that loading is complete
               $scope.projectsLoading = false;            
-              $scope.currentProject($scope.currProject);
+              //$scope.currentProject($scope.currProject);
           }
+      };
+
+      //Set current project and get tasks
+      $scope.currentProject = function (project) {
+
+          $rootScope.currProject = project;
+          $rootScope.$broadcast('current-project-init');
       };
 
       //Adds Project
       $scope.addProject = function () {          
           $scope.projectDto = new Project($scope.user.id, $scope.user.id, $scope.projectName, $scope.projectDescription, $scope.startDate, $scope.endDate);
-          MenuService.AddProjects($scope.projectDto, $scope.RESTURI).then(function (data) {
+          MenuService.AddProjects($scope.projectDto, $scope.RESTURI).then(function (result) {
+              $scope.result = angular.fromJson(result);
 
+              if ($scope.result.success) {
+                  setTimeout(function () { $('#AddProjModal').modal('hide'); $scope.result = undefined;}, 1000);
+
+                  //Garbage collector for Add Project attributes
+                  $scope.user.id = undefined;
+                  $scope.user.id = undefined;
+                  $scope.projectName = undefined;
+                  $scope.projectDescription = undefined;
+                  $scope.startDate = undefined;
+                  $scope.endDate = undefined;
+
+                  //Reload Projects
+                  $scope.projects = undefined; //Garbage collector
+                  $scope.getProjects();
+              }
           });
       };
-      
-      $scope.$on('load-Tasks', function (event, args) {         
-          setTimeout(function () { $rootScope.$broadcast('current-project-init'); }, 100);
-                 
+
+      $scope.$on('current-user-init', function (event, args) {        
+          $scope.getProjects();
       });
+      
+      $scope.$on('load-Tasks', function (event, args) {
+          if ($scope.user === undefined) {
+              $scope.getUser();
+          } else {
+              $rootScope.$broadcast('current-project-init');
+          }
+      });
+
+      $scope.$on('load-Project Resources', function (event, args) {
+          if ($scope.user === undefined) {
+              $scope.getUser();
+          } else {
+              $rootScope.$broadcast('current-project-init');
+          }
+      });
+
+      $scope.$on('load-Project Comments', function (event, args) {
+          if ($scope.user === undefined) {
+              $scope.getUser();
+          } else {
+              $rootScope.$broadcast('current-project-init');
+          }
+      });
+
+      //DatePicker
+      $scope.dateOptions = {
+          changeYear: true,
+          changeMonth: true,
+          yearRange: '0:+5'
+      };
       
       //$rootScope.
       $rootScope.currMenuItem = MenuService.CurrentMenuItem();
       $rootScope.toggle = function (name) { MenuService.Toggle(name); };
       $rootScope.showMenu = function () { return MenuService.ShowMenu(); };
-      $rootScope.logout = function () { MenuService.Logout(); };
+      $rootScope.logout = function () {
+          $scope.tasks = undefined;
+          $scope.projects = undefined;
+          $rootScope.currTask = undefined;
+          $rootScope.currProject = undefined;
+          $rootScope.user = undefined;
+          MenuService.Logout();
+      };
 
   });

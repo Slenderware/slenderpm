@@ -1,10 +1,41 @@
 ﻿<div class="panel panel-default fade-in one" >
-	<div class="panel-heading">Progress</div>
+	<div class="panel-heading">{{currTask.name}} details <a style="color:#333;float:right;" data-toggle="modal" data-target="#LogTimeModal">Log Time&nbsp;<i class="fa fa-clock-o fa-lg" ></i></a></div>
 	<div class="panel-body">
-	<div class="progress" style="margin-bottom: 0px;">
-		<div class="progress-bar" role="progressbar" aria-valuenow="{{currTask.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{currTask.progress}}%;">
-		{{currTask.progress}}%
-		</div>
+    <h4 style="margin:0px;">{{currTask.name}} - <span ng-if="currTask.priority === 1">Low</span>
+            <span ng-if="currTask.priority === 2">Medium</span>
+            <span ng-if="currTask.priority === 3">High</span></h4>
+    <p style="margin-top:0.2em;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#efefef;">       
+        {{currTask.description}}    
+         <br /><br />
+    </p>
+    <h4 style="margin:0px;">Progress</h4>
+	<div class="progress" style="margin-bottom: 3px;margin-top:1em;">
+		<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{currTaskProgress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{currTaskProgress}}%;">
+		{{currTaskProgress}}%
+		</div>        
 	</div>
+    <p>{{currTask.progress}} hours logged</p>
 	</div>
 </div>
+
+<!-- Add Project Modal -->
+<div class="modal fade" id="LogTimeModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <form>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Log time for {{currTask.name}}</h4>
+          </div>
+          <div class="modal-body">        
+            <input type="text" class="form-control" placeholder="Hours to alocate" ng-model="hours"></input>     
+            <div ng-class="result === 'Success' ? 'alert alert-success' : 'alert alert-danger'" ng-hide="result === undefined" style="margin-top:0.5em;">{{result}}</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" ng-click="addTaskProgress(hours)" value="Log Time"></input>
+          </div>
+        </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

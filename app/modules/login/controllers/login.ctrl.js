@@ -17,13 +17,28 @@ angular.module('slenderpmApp.login.controller')
     $scope.register = function(){
       LoginService.Register();
     };
-
-    $scope.authenticate = function(){ 
+    
+    $scope.loginLoading = false;
+    $scope.authenticate = function () {
+        $scope.loginLoading = true;
         LoginService.Authenticate($scope.username, $scope.password, $scope.RESTURI).then(function (result) {
-            $scope.result = angular.fromJson(result);           
-            if ($scope.result.success) {
-                $location.path('Tasks');
-                $cookies.session = $scope.result.sessionId;              
+            $scope.loginLoading = false;
+
+            try {
+                $scope.result = angular.fromJson(result);
+
+                if ($scope.result != undefined) {
+                    $scope.message = $scope.result.message;
+                    if ($scope.result.success) {
+                        $location.path('Tasks');                       
+                        $cookies.session = $scope.result.sessionId;
+                        setTimeout(function () { $rootScope.$broadcast('load-Tasks'); }, 100);
+                        $scope.result = undefined;
+                    }
+                }
+            }
+            catch (err) {
+                $scope.message = 'Whoops, look\'s like the server didn\'t like the request. Please try again later';
             }
         });
     };

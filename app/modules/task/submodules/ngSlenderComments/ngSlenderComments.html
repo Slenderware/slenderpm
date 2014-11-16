@@ -1,24 +1,26 @@
-﻿<div class="panel panel-default fade-in one">
-	<div class="panel-heading">Comments</div>
-	<div class="panel-body" style="overflow:auto;">
-        <ul class="media-list">
-            <li class="media" ng-repeat="comment in comments">
-                <a class="pull-left" href="#">
-                  <i class="fa fa-user fa-2x" style="float:left;color:#34495e;"></i>     
-                </a>
-                <div class="media-body">
-                  <h5 class="media-heading">Test Username</h5>
-                    {{comment.comment}}
-                </div>
-            </li>               
-        </ul>
-	</div>
-    <div class="panel-footer">        
-        <div class="input-group">
-          <input type="text" class="form-control" id="txtComment" placeholder="Enter comment..." style="margin-top: 0px;">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default" style="float:right;margin-top: 0px;">Go!</button>
-          </span>
-        </div><!-- /input-group -->
+﻿<form>
+    <div class="panel panel-default fade-in one">    
+	    <div class="panel-heading">Comments</div>
+	    <div class="panel-body" style="overflow:auto;max-height:500px">        
+            <ul class="media-list">
+                <li class="media" ng-repeat="comment in comments" style="overflow:auto;">
+                    <a class="pull-left" href="#">
+                      <i class="fa fa-user fa-2x" style="float:left;color:#34495e;"></i>     
+                    </a>
+                    <div class="media-body" style="word-wrap: break-word; ">
+                      <h5 class="media-heading">{{comment.username}}</h5>
+                        <p style="word-wrap: break-word; ">{{comment.comment}}</p>
+                    </div>
+                </li>               
+            </ul>
+	    </div>
+        <div class="panel-footer">        
+            <div class="input-group">
+              <input type="text" class="form-control" id="txtComment" placeholder="Enter comment..." ng-model="comment" style="margin-top: 0px;">
+              <span class="input-group-btn">
+                <input type="submit" class="btn btn-default" ng-click="addComment(comment)" style="float:right;margin-top: 0px;">Go!</input>
+              </span>
+            </div><!-- /input-group -->
+        </div>    
     </div>
-</div>
+</form>

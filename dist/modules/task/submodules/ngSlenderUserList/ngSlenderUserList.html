@@ -1,23 +1,48 @@
 ﻿<div class="panel panel-default fade-in one">
-	<div class="panel-heading">Users</div>		
-	<div class="panel-body" overflow:auto;">
+	<div class="panel-heading">Users <a style="color:#333;float:right;" data-toggle="modal" data-target="#AddUserToProjectModal" ng-click="getProjectUsers()">Add User&nbsp;<i class="fa fa-user fa-lg" ></i></a></div>		
+	<div class="panel-body" style="overflow:auto;max-height:555px">
         <ul class="media-list">
-            <li class="media" ng-repeat="user in users">
-                <a class="pull-left" href="#">
+            <li class="media" ng-repeat="user in users" style="border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#efefef;">
+                <a class="pull-left" style="margin-top:0.5em;">
                     <i class="fa fa-user fa-2x" style="float:left;color:#34495e;"></i>     
                 </a>
                 <div class="media-body">
-                    <h5 class="media-heading">{{user.username}}</h5>                   
+                    <h5 class="media-heading">{{user.username}}</h5>                                  
                 </div>
+                <div class="progress" style="margin-bottom:3px;">
+                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{user.progressPercentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{user.progressPercentage}}%">
+                        {{user.progressPercentage}}% Contributed
+                    </div>
+                </div> 
+                <p style="margin-left:2.2em;">{{user.progressHours}} hours logged</p>
             </li>               
         </ul>
-	</div>
-    <div class="panel-footer">        
-        <div class="input-group">
-          <input type="text" class="form-control" id="txtComment" placeholder="Enter email..." style="margin-top:0px;">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default" style="float:right;margin-top: 0em;">Add User</button>
-          </span>
-        </div><!-- /input-group -->
-    </div>				  								    
+	</div>   			  								    
 </div>
+
+<!-- Add Project Modal -->
+<div class="modal fade" id="AddUserToProjectModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <form>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Users</h4>              
+          </div>
+          <div class="modal-body">     
+              <div class="alert alert-info" role="alert" style="margin-bottom:1em;">
+              To create a user account 
+              <a data-toggle="modal" data-target="#AddUserModal" data-dismiss="modal" class="alert-link">click here</a>
+            </div>   
+              <div class="list-group">
+                  <a ng-class="(userNotAdded(user) === false) ? 'list-group-item disabled' : (user.id === selectedProjectUser.id) ?  'list-group-item active' : 'list-group-item'" ng-repeat="user in projectusers" ng-click="setSelectedProjUser(user)">{{user.username}}</a>                 
+                </div>
+              </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" ng-click="addUser()" value="Add User"></input>
+          </div>
+        </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

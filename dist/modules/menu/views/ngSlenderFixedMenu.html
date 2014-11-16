@@ -1,12 +1,13 @@
 ﻿<nav class="navbar navbar-default navbar-fixed-top custom" role="navigation" ng-show="showMenu()">
     <div class="container">
     <img class="logothumb" logo src='modules/menu/res/logo.png'></img>
-    <a id="selector" data-toggle="tooltip" data-placement="bottom" title="Toggle menu"><i class="fa fa-navicon fa-lg" ng-show="showMenu()"></i></a>            
+    <a id="selector" data-toggle="tooltip" data-placement="bottom" title="Toggle menu"><i class="fa fa-navicon fa-lg" ng-show="showMenu()"></i></a>   
+    <a data-toggle="modal" data-target="#AddUserModal" ng-show="user.roleId === 1"><i class="fa fa-users" data-toggle="tooltip" data-placement="bottom" title="Company Users"></i></a>          
     <div class="btn-group" ng-show="showMenu()"> 
-        <a data-toggle="dropdown" ng-click="getProjects()" ng-if="currProject !== undefined"><h4 style="margin-top: 12px;">{{currProject.name}}</h4></a> 
-        <a data-target="#AddProjModal" ng-if="currProject === undefined"><h4 style="margin-top: 12px;">Create new Project</h4></a>    
+        <a data-toggle="dropdown" ng-click="getProjects()" ng-if="currProject !== undefined" ng-show="user.roleId === 1"><h5 style="margin-top: 12px;" data-toggle="tooltip" data-placement="bottom" title="Add Project">{{currProject.name}}</h5></a> 
+        <a data-toggle="modal" data-target="#AddProjModal" ng-if="currProject === undefined" ng-show="user.roleId === 1"><i class="fa fa-plus fa-lg" style="margin-top:5px;" data-toggle="tooltip" data-placement="bottom" title="Add Project"></i></a>       
         <ul class="dropdown-menu" role="menu">  
-         <div style="cursor:pointer;" data-toggle="modal" data-target="#AddProjModal">
+         <div style="cursor:pointer;" data-toggle="modal" data-target="#AddProjModal" ng-show="user.roleId == 1">
              <i class="fa fa-plus"></i>Add new Project
          </div>                   
          <li ng-repeat="project in projects" ng-click="currentProject(project)" ng-hide="projectsLoading"><a>{{project.name}}</a></li> 
@@ -14,12 +15,13 @@
              <i class="fa fa-circle-o-notch fa-spin"></i>
          </div>                      
         </ul>
-    </div>
+    </div>      
     <a ng-click='logout()' style="float:right;"><i class="fa fa-sign-out fa-lg" ></i></a>   
     </div>
 </nav>
 
-<div class="modal fade" id="AddProjModal">
+<!-- Add Project Modal -->
+<div class="modal fade" id="AddProjModal" ng-show="user.roleId == 1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -29,8 +31,9 @@
       <div class="modal-body">
         <input type="text" class="form-control" placeholder="Name" ng-model="projectName"></input>      
         <input type="text" class="form-control" placeholder="Description" ng-model="projectDescription"></input>  
-        <input type="text" class="form-control" id="datepicker1" placeholder="Start date" ng-model="startDate"></input>     
-        <input type="text" class="form-control" id="datepicker2" placeholder="End date" ng-model="endDate"></input>     
+        <input type="text" class="form-control" ui-date="dateOptions" ui-date-format="yy/d/m" id="datepicker1" placeholder="Start date" ng-model="startDate"></input>     
+        <input type="text" class="form-control" ui-date="dateOptions" ui-date-format="yy/d/m" id="datepicker2" placeholder="End date" ng-model="endDate"></input>     
+        <div ng-class="result.success ? 'alert alert-success' : 'alert alert-danger'" ng-hide="result === undefined" style="margin-top:0.5em;">{{result.message}}</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -39,4 +42,86 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<!-- Add User Modal -->
+<div class="modal fade" id="AddUserModal" ng-controller="RegisterCtrl">
+  <form name="addUserForm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Create an user account</h4>
+          </div>
+          <div class="modal-body">               	
+		    <div ng-class="validate(name) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+				<label for="exampleInputEmail1">Name</label>
+				<input type="text" class="form-control" id="txtEmail" placeholder="Name" ng-model="name">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(name)"></span>
+				</div>
+				<div ng-class="validate(surname) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+				<label for="exampleInputPassword1">Surname</label>
+				<input type="text" class="form-control" id="txtPassword" placeholder="Surname" ng-model="surname">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(surname)"></span>
+				</div>
+                <div ng-class="validate(username) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+				<label for="exampleInputPassword1">Username</label>
+				<input type="text" class="form-control" id="Password1" placeholder="Username" ng-model="username">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(username)"></span>
+				</div>  
+				<div ng-class="validate(email) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+				<label for="exampleInputPassword1">Email</label>
+				<input type="text" class="form-control" id="txtPasswordConfirm" placeholder="Email" ng-model="email">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(email)"></span>
+				</div>        
+                <div ng-class="validate(password) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+				<label for="txtPassword">Password</label>
+				<input type="password" class="form-control" id="Password2" placeholder="Password" ng-model="password" name="password" password-strength="password">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(password)"></span>
+                <span class="help-inline" data-ng-show='addUserForm.password.$valid && addUserForm.password.$dirty' data-ng-class="strength">This password is {{strength}} ! </span>
+				</div>   
+                <div ng-class="validate(confirmPassword) ? 'form-group has-feedback' : 'form-group has-error has-feedback'" style="margin-bottom:15px;">
+				<label for="txtConfirmPassword">Confirm Password</label>
+				<input type="password" class="form-control" id="txtConfirmPassword" placeholder="Confirm Password" ng-model="confirmPassword">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-hide="validate(confirmPassword)"></span>
+				</div>                 					
+				<div ng-class="result.success ? 'alert alert-success' : 'alert alert-danger'" ng-hide="message === undefined" role="alert">{{message}}</div>
+            </div>             
+          <div class="modal-footer">            
+            <input type="submit" class="btn btn-primary" style="float:right;" value="Register" ng-click="registerUser(name, surname, username, email, password, confirmPassword)" ng-disabled="!validate(name) || 
+                                                                                                                                                  !validate(surname) || 
+                                                                                                                                                  !validate(username) ||
+                                                                                                                                                  !validate(email) || 
+                                                                                                                                                  !validate(password) || 
+                                                                                                                                                  !validate(confirmPassword) ||
+                                                                                                                                                  name === undefined || 
+                                                                                                                                                  surname === undefined ||
+                                                                                                                                                  username === undefined || 
+                                                                                                                                                  email === undefined ||
+                                                                                                                                                  password === undefined || 
+                                                                                                                                                  confirmPassword === undefined"></input>
+            <button type="button" class="btn btn-default" style="float:right;" data-dismiss="modal">Close</button>
+            <i class="fa fa-circle-o-notch fa-spin fa-2x" style="float:right;margin-right:0.3em;margin-top:0.3em;" ng-show="registerLoading"></i>        
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+  </form>
+</div><!-- /.modal -->
+
+
+<!--Popup if no projects-->
+<!--<div id="noProjects" ngCloak class="{{currProject == undefined && user != undefined}}" style="display:none;">
+    <div style="display: table-cell;vertical-align: middle;line-height: normal;">
+        <div class="container-fluid">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+              <div class="jumbotron fade-down">
+              <h1>Welcome {{user.username}}!</h1>
+              <p>Looks like you have no projects..</p>
+              <p><a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#AddProjModal" role="button">Add Project</a></p>
+            </div>
+          </div>
+          <div class="col-md-4"></div>
+        </div>        
+    </div>
+</div>-->
 
