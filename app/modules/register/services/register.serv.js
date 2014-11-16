@@ -28,8 +28,8 @@
 angular.module('slenderpmApp.register.service')
 
   //Service called RegisterService
-  .service('RegisterService', ['$http', '$location', '$q', '$cookies', 'RegisterModule', 'RegisterCompanyModule', 'ResultModule',
-      function ($http, $location, $q, $cookies, RegisterModule, RegisterCompanyModule, ResultModule) {
+  .service('RegisterService', ['$http', '$location', '$q', '$cookies', 'RegisterModule', 'RegisterCompanyModule',
+      function ($http, $location, $q, $cookies, RegisterModule, RegisterCompanyModule) {
 
           this.InitRegisterModule = function (name, surname, username, email, password, companyid) {
           return new RegisterModule(name, surname, username, email, password, companyid);
@@ -53,12 +53,12 @@ angular.module('slenderpmApp.register.service')
               data: 'firstName=' + RegisterModule.firstName + '&lastName=' + RegisterModule.lastName + '&username=' + RegisterModule.username + '&password=' + RegisterModule.password + '&email=' + RegisterModule.email + '&companyId=' + RegisterModule.companyId + '&roleId=' + RegisterModule.roleId,
               headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
           })
-          .success(function (data, status, headers, config) {
+          .success(function (data) {
               // this callback will be called asynchronously
               // when the response is available                
               deferred.resolve(data);
           }).
-          error(function (data, status, headers, config) {
+          error(function (data) {
               // called asynchronously if an error occurs
               // or server returns response with an error status.               
               deferred.resolve(data);
@@ -75,12 +75,12 @@ angular.module('slenderpmApp.register.service')
                   data: 'firstName=' + RegisterModule.firstName + '&lastName=' + RegisterModule.lastName + '&username=' + RegisterModule.username + '&password=' + RegisterModule.password + '&email=' + RegisterModule.email + '&companyId=' + RegisterModule.companyId + '&roleId=' + 2,
                   headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
               })
-              .success(function (data, status, headers, config) {
+              .success(function (data) {
                   // this callback will be called asynchronously
                   // when the response is available                
                   deferred.resolve(data);
               }).
-              error(function (data, status, headers, config) {
+              error(function (data) {
                   // called asynchronously if an error occurs
                   // or server returns response with an error status.               
                   deferred.resolve(data);
@@ -97,12 +97,12 @@ angular.module('slenderpmApp.register.service')
               data: 'name=' + RegisterCompanyModule.name,
               headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
           })
-          .success(function (data, status, headers, config) {
+          .success(function (data) {
               // this callback will be called asynchronously
               // when the response is available                
               deferred.resolve(data);
           }).
-          error(function (data, status, headers, config) {
+          error(function (data) {
               // called asynchronously if an error occurs
               // or server returns response with an error status.               
               deferred.resolve(data);

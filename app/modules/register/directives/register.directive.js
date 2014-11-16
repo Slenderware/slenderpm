@@ -26,7 +26,7 @@
  */
 angular
 .module('slenderpmApp.register.directive', [])
-.directive("passwordStrength", function () {
+.directive('passwordStrength', function () {
 return {
     restrict: 'A',
     link: function (scope, element, attrs) {

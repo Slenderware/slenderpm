@@ -24,9 +24,10 @@
     SOFTWARE.
  */-->
 <div class="panel panel-default fade-in one" >
-	<div class="panel-heading">{{currTask.name}} details <a style="color:#333;float:right;" data-toggle="modal" data-target="#LogTimeModal">Log Time&nbsp;<i class="fa fa-clock-o fa-lg" ></i></a></div>
+	<div class="panel-heading">{{currTask.name}} details <a style="color:#333;float:right;" data-toggle="modal" data-target="#LogTimeModal" ng-show="currTask.statusId != 3 && currTask.statusId != 4">Log Time&nbsp;<i class="fa fa-clock-o fa-lg" ></i></a></div>
 	<div class="panel-body">
-    <h4 style="margin:0px;">{{currTask.name}} - <span ng-if="currTask.priority === 1">Low</span>
+    <h4 style="margin:0px;">{{currTask.name}} - 
+			<span ng-if="currTask.priority === 1">Low</span>
             <span ng-if="currTask.priority === 2">Medium</span>
             <span ng-if="currTask.priority === 3">High</span></h4>
     <p style="margin-top:0.2em;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#efefef;">       

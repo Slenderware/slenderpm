@@ -31,7 +31,7 @@ angular.module('slenderpmApp.gantt.service')
   .service('GanttService', function () {
       this.FetchData = function (projectID) {
           return {
-              data: [
+              /*data: [
                  {
                      id: 1, text: 'Project #2', start_date: '01-04-2013', duration: 18, order: 10,
                      progress: 0.4, open: true
@@ -50,7 +50,7 @@ angular.module('slenderpmApp.gantt.service')
                 { id: 2, source: 2, target: 3, type: '0' },
                 { id: 3, source: 3, target: 4, type: '0' },
                 { id: 4, source: 2, target: 5, type: '2' },
-              ]
+              ]*/
           };
       };
   });

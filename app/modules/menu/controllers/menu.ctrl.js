@@ -67,7 +67,7 @@ angular.module('slenderpmApp.menu.controller')
 
       //Set current project and get tasks
       $scope.currentProject = function (project) {
-
+			console.log('project init');
           $rootScope.currProject = project;
           $rootScope.$broadcast('current-project-init');
       };
@@ -80,7 +80,7 @@ angular.module('slenderpmApp.menu.controller')
 
               if ($scope.result.success) {
                   setTimeout(function () { $('#AddProjModal').modal('hide'); $scope.result = undefined;}, 1000);
-
+				  $scope.result = undefined;
                   //Garbage collector for Add Project attributes
                   $scope.user.id = undefined;
                   $scope.user.id = undefined;
@@ -96,31 +96,33 @@ angular.module('slenderpmApp.menu.controller')
           });
       };
 
-      $scope.$on('current-user-init', function (event, args) {        
+      $scope.$on('current-user-init', function () {        
           $scope.getProjects();
       });
       
-      $scope.$on('load-Tasks', function (event, args) {
+      $scope.$on('load-Tasks', function () {
           if ($scope.user === undefined) {
               $scope.getUser();
           } else {
-              $rootScope.$broadcast('current-project-init');
+			//if($scope.currProject === undefined){
+				$rootScope.$broadcast('current-project-init');
+			  //}
           }
       });
 
-      $scope.$on('load-Project Resources', function (event, args) {
+      $scope.$on('load-Project Resources', function () {
           if ($scope.user === undefined) {
               $scope.getUser();
           } else {
-              $rootScope.$broadcast('current-project-init');
+              $rootScope.$broadcast('current-project-res');
           }
       });
 
-      $scope.$on('load-Project Comments', function (event, args) {
+      $scope.$on('load-Project Comments', function () {
           if ($scope.user === undefined) {
               $scope.getUser();
           } else {
-              $rootScope.$broadcast('current-project-init');
+              $rootScope.$broadcast('current-project-comment');
           }
       });
 

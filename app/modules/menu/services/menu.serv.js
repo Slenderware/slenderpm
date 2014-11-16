@@ -56,13 +56,13 @@ angular.module('slenderpmApp.menu.service')
               data: 'sessionId=' + $cookies.session,
               headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
           })
-          .success(function (data, status, headers, config) {
+          .success(function (data) {
               // this callback will be called asynchronously
               // when the response is available   
 
               deferred.resolve(data);
           }).
-          error(function (data, status, headers, config) {
+          error(function (data) {
               // called asynchronously if an error occurs
               // or server returns response with an error status.               
               deferred.resolve(data);
@@ -80,13 +80,13 @@ angular.module('slenderpmApp.menu.service')
               data: 'projectName=' + project.projectName + '&projectDescription=' + project.projectDescription + '&startDate=' + '2014-11-08' + '&endDate=' + '2014-11-09' + '&projectCreator=' + $rootScope.user.id + '&projectManager=' + $rootScope.user.id,
               headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
           })
-          .success(function (data, status, headers, config) {
+          .success(function (data) {
               // this callback will be called asynchronously
               // when the response is available   
 
               deferred.resolve(data);
           }).
-          error(function (data, status, headers, config) {
+          error(function (data) {
               // called asynchronously if an error occurs
               // or server returns response with an error status.               
               deferred.resolve(data);

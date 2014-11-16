@@ -45,7 +45,7 @@ angular.module('slenderpmApp.login.controller')
             try {
                 $scope.result = angular.fromJson(result);
 
-                if ($scope.result != undefined) {
+                if ($scope.result !== undefined) {
                     $scope.message = $scope.result.message;
                     if ($scope.result.success) {
                         $location.path('Tasks');                       

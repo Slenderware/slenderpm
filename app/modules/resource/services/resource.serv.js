@@ -40,13 +40,13 @@ angular.module('slenderpmApp.resource.service')
             data: 'id=' + projid,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data	) {
             // this callback will be called asynchronously
             // when the response is available   
 
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
 
@@ -66,13 +66,13 @@ angular.module('slenderpmApp.resource.service')
             data: 'id=' + companyid,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available   
 
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
 
@@ -91,13 +91,13 @@ angular.module('slenderpmApp.resource.service')
             data: 'userId=' + userId + '&projectId=' + projectId,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available   
 
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
 

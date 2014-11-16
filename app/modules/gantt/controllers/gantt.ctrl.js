@@ -36,20 +36,20 @@ angular.module('slenderpmApp.gantt.controller')
 
         link: function ($scope, $element, $attrs) {
             //watch data collection, reload on changes
-            $scope.$watch($attrs.data, function (collection) {
-                gantt.clearAll();
-                gantt.parse(collection, 'json');
+            $scope.$watch($attrs.data, function () {
+                //gantt.clearAll();
+                //gantt.parse(collection, 'json');
             }, true);
 
             //size of gantt
             $scope.$watch(function () {
                 return $element[0].offsetWidth + '.' + $element[0].offsetHeight;
             }, function () {
-                gantt.setSizes();
+                //gantt.setSizes();
             });
 
             //init gantt
-            gantt.init($element[0]);
+            //gantt.init($element[0]);
         }
     };
 })

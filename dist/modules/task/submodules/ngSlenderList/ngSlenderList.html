@@ -38,7 +38,7 @@
               <div class="panel panel-default">
                 <div ng-click="setCurrentTask(task)" ng-class="task.id === currTask.id ?  'panel-heading active' : 'panel-heading'" ><!-- data-parent="#accordion" data-toggle="collapse" data-target="#collapse{{task.id}}"-->                                             
                     {{task.name}} 
-                    <label class="switch" style="float:right;" ng-show="user.roleId == 1"><input type="checkbox" data-toggle="modal" data-target="#markAsCompleteTaskModal"><i></i></label>                   
+                    <label class="switch" style="float:right;" ng-show="user.roleId == 1"><input type="checkbox" data-toggle="modal" data-target="#markAsCompleteTaskModal" ng-checked="task.statusId === 3 || task.statusId === 4" ng-disabled="task.statusId === 3 || task.statusId === 4"><i></i></label>                   
                 </div>
                 <div id="collapse{{task.id}}" class="panel-collapse collapse">
                   <div class="panel-body">
@@ -88,7 +88,7 @@
     <form>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Mark tas {{currTask.name}} as completed</h4>
+        <h4 class="modal-title">Mark task {{currTask.name}} as completed</h4>
       </div>
       <div class="modal-body">
         <div class="alert alert-info" role="alert">Danger zone! Please enter the name of the task that you would like to delete.</div>

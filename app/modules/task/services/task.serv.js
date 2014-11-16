@@ -43,12 +43,12 @@ angular.module('slenderpmApp.task.service')
             data: 'id=' + projid,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available   
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             deferred.resolve(data);
@@ -65,12 +65,12 @@ angular.module('slenderpmApp.task.service')
             data: 'sessionId=' + session + '&projectId=' + projid,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available   
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             deferred.resolve(data);
@@ -87,12 +87,12 @@ angular.module('slenderpmApp.task.service')
             data: 'taskName=' + taskModule.taskName + '&taskDesc=' + taskModule.taskDesc + '&plannedStartDate=' + taskModule.plannedStartDate + '&plannedEndDate=' + taskModule.plannedEndDate + '&projectId=' + taskModule.projectId + '&timeAllocation=' + taskModule.timeAllocation + '&priorityId=' + taskModule.priorityId,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available   
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             deferred.resolve(data);
@@ -109,23 +109,19 @@ angular.module('slenderpmApp.task.service')
             data: 'id=' + taskid,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available   
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             deferred.resolve(data);
         });
         return deferred.promise;
     };
-
-    this.GetSubTasks = function (taskid) {
-        return '[{"id":"1", "title":"Task1"},{"id":"2", "title":"Task2"},{"id":"3", "title":"Task3"}]';
-    };
-
+	
     //Progress
     this.InitTaskProgress = function (taskId, userId, hours) {
         return new TaskProgress(taskId, userId, hours);
@@ -140,12 +136,12 @@ angular.module('slenderpmApp.task.service')
             data: 'id=' + taskProgress.taskId + '&userId=' + taskProgress.userId + '&hours=' + taskProgress.hours,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available  
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             deferred.resolve(data);
@@ -163,12 +159,12 @@ angular.module('slenderpmApp.task.service')
             data: 'id=' + taskid,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available  
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             deferred.resolve(data);
@@ -188,19 +184,19 @@ angular.module('slenderpmApp.task.service')
             data: 'userId=' + Comment.userId + '&taskId=' + Comment.parentId + '&comment=' + Comment.comment,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available  
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             deferred.resolve(data);
         });
 
         return deferred.promise;
-    }
+    };
 
     this.GetComments = function (taskid, uri) {
         //Enables callback when http request is done
@@ -211,12 +207,12 @@ angular.module('slenderpmApp.task.service')
             data: 'id=' + taskid,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available  
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             deferred.resolve(data);
@@ -236,13 +232,13 @@ angular.module('slenderpmApp.task.service')
             data: 'id=' + taskid,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available   
 
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
 
@@ -261,13 +257,13 @@ angular.module('slenderpmApp.task.service')
             data: 'userId=' + userId + '&taskId=' + taskId,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available   
 
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
 
@@ -287,13 +283,13 @@ angular.module('slenderpmApp.task.service')
             data: 'id=' + projectid,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
         })
-        .success(function (data, status, headers, config) {
+        .success(function (data) {
             // this callback will be called asynchronously
             // when the response is available   
 
             deferred.resolve(data);
         }).
-        error(function (data, status, headers, config) {
+        error(function (data) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
 

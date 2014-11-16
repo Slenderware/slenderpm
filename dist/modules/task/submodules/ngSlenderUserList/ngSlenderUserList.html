@@ -24,7 +24,7 @@
     SOFTWARE.
  */-->
 <div class="panel panel-default fade-in one">
-	<div class="panel-heading">Users <a style="color:#333;float:right;" data-toggle="modal" data-target="#AddUserToProjectModal" ng-click="getProjectUsers()">Add User&nbsp;<i class="fa fa-user fa-lg" ></i></a></div>		
+	<div class="panel-heading">Users <a style="color:#333;float:right;" data-toggle="modal" data-target="#AddUserToProjectModal" ng-click="getProjectUsers()" ng-show="user.roleId === 1">Add User&nbsp;<i class="fa fa-user fa-lg" ></i></a></div>		
 	<div class="panel-body" style="overflow:auto;max-height:555px">
         <ul class="media-list">
             <li class="media" ng-repeat="user in users" style="border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#efefef;">

@@ -41,14 +41,15 @@ angular.module('slenderpmApp.task.controller')
     $scope.taskLoading = false;
     $scope.getTasks = function () {
         $scope.taskLoading = true;
-        if ($scope.currProject != undefined) {
+        if ($scope.currProject !== undefined) {
 		if($scope.user.roleId === 1){
+			console.log($scope.currProject.id);
             TasksService.GetTasks($cookies.session, $scope.currProject.id, $scope.RESTURI).then(function (result) {                
                 $scope.taskLoading = false;
                 //Populates tasks	
 				console.log('test');				
                 $scope.tasks = angular.fromJson(result);
-				//console.log($rootScope.tasks);
+				console.log($scope.tasks);
                 $scope.setCurrentTask($scope.tasks[0]);              
             });
 		}else{
@@ -91,7 +92,8 @@ angular.module('slenderpmApp.task.controller')
         }
     };
 
-    $scope.$on('current-project-init', function (event, args) {
+    $scope.$on('current-project-init', function () {	
+		console.log('current-project-init');
         $scope.getTasks();
     });
 
@@ -111,7 +113,7 @@ angular.module('slenderpmApp.task.controller')
     };
 
     $scope.getTaskProgress = function () {
-        if ($scope.currTask != undefined) {
+        if ($scope.currTask !== undefined) {
             TasksService.GetTaskProgress($scope.currTask.id, $scope.RESTURI).then(function (result) {                        
                 if (result > 100) {
                     $scope.currTaskProgress = 100;
@@ -122,13 +124,13 @@ angular.module('slenderpmApp.task.controller')
         }
     };
 
-    $scope.$on('current-task-init', function (event, args) {
+    $scope.$on('current-task-init', function () {
         $scope.getTaskProgress();
     });
   
     //COMMENTS
     $scope.getComments = function () {
-        if ($scope.currTask != undefined) {
+        if ($scope.currTask !== undefined) {
             TasksService.GetComments($scope.currTask.id, $scope.RESTURI).then(function (result) {
                 $scope.comments = angular.fromJson(result);
             });
@@ -136,20 +138,21 @@ angular.module('slenderpmApp.task.controller')
     };
 
     $scope.addComment = function (comment) {
-        var comment = ProjectCommentService.InitProjectComment($scope.user.id, $scope.currTask.id, comment);     
-        TasksService.AddComment(comment, $scope.RESTURI).then(function (result) {
+        var commentMod = ProjectCommentService.InitProjectComment($scope.user.id, $scope.currTask.id, comment);     
+        TasksService.AddComment(commentMod, $scope.RESTURI).then(function (result) {
+			console.log(result);
             $scope.comment = undefined;           
             $scope.getComments();
         });
     };
 
-    $scope.$on('current-task-init', function (event, args) {        
+    $scope.$on('current-task-init', function () {        
         $scope.getComments();
     });
 
     //USERS
     $scope.getUsers = function () {
-        if ($scope.currTask != undefined) {
+        if ($scope.currTask !== undefined) {
             TasksService.GetUsers($scope.currTask.id, $scope.RESTURI).then(function (result) {
                 $scope.users = angular.fromJson(result);
                 $rootScope.$broadcast('current-users-init');
@@ -158,7 +161,7 @@ angular.module('slenderpmApp.task.controller')
     };
 
     $scope.getProjectUsers = function () {
-        if ($scope.currProject != undefined) {
+        if ($scope.currProject !== undefined) {
             TasksService.GetProjectUsers($scope.currProject.id, $scope.RESTURI).then(function (result) {
                 $scope.projectusers = angular.fromJson(result);
             });
@@ -166,8 +169,9 @@ angular.module('slenderpmApp.task.controller')
     };
 
     $scope.addUser = function () {
-        if ($scope.currTask != undefined && $scope.selectedProjectUser != undefined) {
+        if ($scope.currTask !== undefined && $scope.selectedProjectUser !== undefined) {
             TasksService.AddUser($scope.selectedProjectUser.id, $scope.currTask.id, $scope.RESTURI).then(function (result) {
+				console.log(result);
                 $scope.projectusers = undefined;
                 $scope.selectedProjectUser = undefined;
                 $('#AddUserToProjectModal').modal('hide');
@@ -179,7 +183,7 @@ angular.module('slenderpmApp.task.controller')
     $scope.userNotAdded = function (user) {
 		console.log(user);
 		console.log($scope.users);
-        if (user != undefined && $scope.users != undefined) {
+        if (user !== undefined && $scope.users !== undefined) {
             for (var i = 0; i < $scope.users.length; i++) {
                 if ($scope.users[i].id === user.id) {
                     return false;
@@ -196,17 +200,17 @@ angular.module('slenderpmApp.task.controller')
         $scope.selectedProjectUser = user;
     };
 
-    $scope.$on('current-task-init', function (event, args) {        
+    $scope.$on('current-task-init', function () {        
         $scope.getUsers();
     });
  
     //CONTRIBUTION CHART
-    $scope.$on('current-users-init', function (event, args) {      
+    $scope.$on('current-users-init', function () {      
         $scope.getChartData();
     });
 
     $scope.getChartData = function () {
-        if ($rootScope.currTask != undefined) {
+        if ($scope.currTask !== undefined) {
         $scope.data1 = { data: TasksService.InitChart($scope.users) };
         $scope.chartColors = [];     
         for (var i = 0; i < $scope.users.length; i++) {
@@ -231,7 +235,7 @@ angular.module('slenderpmApp.task.controller')
 
         $scope.config1 = {
             labels: false,
-            title: "User Contribution",
+            title: 'User Contribution',
             legend: {
                 display: true,
                 position: 'left'

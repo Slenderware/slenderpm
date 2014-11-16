@@ -26,7 +26,7 @@
     SOFTWARE.
  */
 angular.module('slenderpmApp.resource.controller')
-  .controller('ResourcesCtrl', function ($scope, MenuService, ResourceService, TasksService) {
+  .controller('ResourcesCtrl', function ($scope, MenuService, ResourceService) {
 
       MenuService.Toggle('Project Resources');
 
@@ -38,7 +38,7 @@ angular.module('slenderpmApp.resource.controller')
       };
 
       $scope.getProjectUsers = function () {
-          if ($scope.currProject != undefined) {
+          if ($scope.currProject !== undefined) {
               ResourceService.GetCompanyUsers($scope.user.companyId, $scope.RESTURI).then(function (result) {               
                   $scope.projectusers = angular.fromJson(result);
               });
@@ -46,8 +46,9 @@ angular.module('slenderpmApp.resource.controller')
       };
 
       $scope.addUser = function () {
-          if ($scope.currTask != undefined && $scope.selectedProjectUser != undefined) {
+          if ($scope.currTask !== undefined && $scope.selectedProjectUser !== undefined) {
               ResourceService.AddUser($scope.selectedProjectUser.id, $scope.currProject.id, $scope.RESTURI).then(function (result) {
+				  console.log(result);
                   $scope.projectusers = undefined;
                   $scope.selectedProjectUser = undefined;
                   $('#AddUserToProjectModal').modal('hide');
@@ -57,7 +58,7 @@ angular.module('slenderpmApp.resource.controller')
       };
 
       $scope.userNotAdded = function (user) {
-          if (user != undefined && $scope.users != undefined) {
+          if (user !== undefined && $scope.users !== undefined) {
               for (var i = 0; i < $scope.users.length; i++) {
                   if ($scope.users[i].id === user.id) {
                       return false;
@@ -70,7 +71,7 @@ angular.module('slenderpmApp.resource.controller')
           }
       };
 
-      $scope.$on('current-project-init', function (event, args) {
+      $scope.$on('current-project-res', function () {
           $scope.getUsers();
       });
 

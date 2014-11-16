@@ -44,7 +44,7 @@ angular.module('slenderpmApp.comment.controller')
           });
       };
 
-      $scope.$on('current-project-init', function (event, args) {
+      $scope.$on('current-project-comment', function (event, args) {
           $scope.getComments(); 
       });
   });

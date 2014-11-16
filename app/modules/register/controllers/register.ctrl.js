@@ -39,7 +39,7 @@ angular.module('slenderpmApp.register.controller')
               return;
           }
 
-          if (password != confirmpass) {
+          if (password !== confirmpass) {
               $scope.message = 'The passwords that you have supplied does not match';
               return;
           }
@@ -76,7 +76,7 @@ angular.module('slenderpmApp.register.controller')
               return;
           }
 
-          if (password != confirmpass) {
+          if (password !== confirmpass) {
               $scope.message = 'The passwords that you have supplied does not match';
               return;
           }

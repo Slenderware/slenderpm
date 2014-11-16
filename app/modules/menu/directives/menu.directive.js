@@ -31,8 +31,8 @@ angular
     return {    
         templateUrl: 'modules/menu/views/ngSlenderFixedMenu.html',
         restrict: 'E',
-        link: function (scope, element, attrs) {
-            $("#selector").slenselect();
+        link: function () {
+            $('#selector').slenselect();
         }
 };
   })
