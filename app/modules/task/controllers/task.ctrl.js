@@ -1,11 +1,29 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name slenderpmApp.controller:TasksCtrl
- * @description
- * # TasksCtrl
- * Controller of the slenderpmApp
+ * author Jannik Richter
+ * 
+ *  The MIT License (MIT)
+
+    Copyright © 2014 Slenderware
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
  */
 angular.module('slenderpmApp.task.controller')
 
@@ -24,12 +42,24 @@ angular.module('slenderpmApp.task.controller')
     $scope.getTasks = function () {
         $scope.taskLoading = true;
         if ($scope.currProject != undefined) {
+		if($scope.user.roleId === 1){
             TasksService.GetTasks($cookies.session, $scope.currProject.id, $scope.RESTURI).then(function (result) {                
                 $scope.taskLoading = false;
-                //Populates tasks
-                $rootScope.tasks = angular.fromJson(result);
+                //Populates tasks	
+				console.log('test');				
+                $scope.tasks = angular.fromJson(result);
+				//console.log($rootScope.tasks);
                 $scope.setCurrentTask($scope.tasks[0]);              
             });
+		}else{
+			TasksService.GetUserTasks($cookies.session, $scope.currProject.id, $scope.RESTURI).then(function (result) {                
+                $scope.taskLoading = false;
+                //Populates tasks
+				//console.log(result);
+                $scope.tasks = result;
+                $scope.setCurrentTask($scope.tasks[0]);              
+            });
+		}
         }
     };
 
@@ -51,12 +81,13 @@ angular.module('slenderpmApp.task.controller')
             TasksService.MarkTaskComplete($scope.currTask.id, $scope.RESTURI).then(function (result) {
                 if (result.success) {
                     $('#markAsCompleteTaskModal').modal('hide');
-                    $scope.result = undefined;                    
+                    $scope.result = undefined; 
+					$scope.getTasks();					
                 }
             });
         } else {
             $scope.message = 'This task name does not match the task that must be deleted!';
-            $scope.success = false;
+            $scope.success = false;			
         }
     };
 
@@ -146,13 +177,15 @@ angular.module('slenderpmApp.task.controller')
     };
 
     $scope.userNotAdded = function (user) {
+		console.log(user);
+		console.log($scope.users);
         if (user != undefined && $scope.users != undefined) {
             for (var i = 0; i < $scope.users.length; i++) {
                 if ($scope.users[i].id === user.id) {
                     return false;
-                }
-                return true;
+                }                
             }
+			return true;
         }
         else {
             return true;
@@ -173,7 +206,7 @@ angular.module('slenderpmApp.task.controller')
     });
 
     $scope.getChartData = function () {
-        //if ($scope.data1 === undefined) {
+        if ($rootScope.currTask != undefined) {
         $scope.data1 = { data: TasksService.InitChart($scope.users) };
         $scope.chartColors = [];     
         for (var i = 0; i < $scope.users.length; i++) {
@@ -206,7 +239,7 @@ angular.module('slenderpmApp.task.controller')
             colors: $scope.chartColors,
             innerRadius: 50
         };
-        //}
+        }
     };
 
     //DatePicker
