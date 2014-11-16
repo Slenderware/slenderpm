@@ -39,4 +39,25 @@ describe('Controller: RegisterCtrl', function () {
       $scope: scope
     });
   }));
+  
+  //UI Tests
+  it('Email validation does not work', function () {
+      expect(scope.validateEmail('asd')).toBe(false);
+	  expect(scope.validateEmail('asd@pass.com')).toBe(true);
+  });
+  
+  it('Register loading should be false', function () {      
+	  expect(scope.registerLoading).toBe(false);
+  });
+  
+  it('Registration stage should not initialized correctly', function () {      
+	  expect(scope.stage).toBe(0);
+	  scope.stage++;
+	  expect(scope.stage).toBe(1);
+  });
+  
+  it('Form validation does not work', function () {
+      expect(scope.validate('')).toBe(false);
+	  expect(scope.validate('sdfom')).toBe(true);
+  });
 });

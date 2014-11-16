@@ -40,7 +40,7 @@ describe('Controller: LoginCtrl', function () {
     });
   })); 
 
-    //UI Tests
+  //UI Tests
   it('loginModule username is initialiazed before start', function () {
       expect(scope.username).toBe(undefined);
   });
@@ -59,16 +59,16 @@ describe('Controller: LoginCtrl', function () {
       expect(scope.password).toBe('dummy');
   });
 
-    //Server Tests
-  it('loginModule failed to login to server with dummy details', function () {
-      scope.username = 'dummy';
-      scope.password = 'dummy';
-      scope.authenticate();
+  it('Login loading should be false', function () {     
+      expect(scope.loginLoading).toBe(false);
+  }); 
 
-      scope.$on('loggingIn', function (event, args) {         
-          expect(scope.result.success).toBe(true);
-      }); 
-  });
-
+  it('Form validation does not work', function () {     
+      expect(scope.validate('')).toBe(false);
+	  expect(scope.validate('sdf')).toBe(true);
+  });  
   
+  it('Error message should not display', function () {  
+	  expect(scope.result).toBe(undefined);
+  });
 });

@@ -39,4 +39,34 @@ describe('Controller: MenuCtrl', function () {
       $scope: scope
     });
   }));
+  
+  it('Project loading should be false', function () {      
+      expect(scope.projectsLoading).toBe(false);
+  });
+  
+  it('Date options are incorrect', function () { 
+      expect(scope.dateOptions.changeYear).toBe(true);
+	  expect(scope.dateOptions.changeMonth).toBe(true);
+	  expect(scope.dateOptions.yearRange).toBe('0:+5');
+  });
+  
+  it('Tasks should be undefined', function () {      
+      expect(scope.tasks).toBe(undefined);
+  });
+  
+  it('Projects should be undefined', function () {      
+      expect(scope.projects).toBe(undefined);
+  });
+  
+  it('currTask should be undefined', function () {      
+      expect(scope.currTask).toBe(undefined);
+  });
+  
+  it('currProject should be undefined', function () {      
+      expect(scope.currProject).toBe(undefined);
+  });
+  
+  it('user should be undefined', function () {      
+      expect(scope.user).toBe(undefined);
+  });
 });
