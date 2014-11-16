@@ -60,6 +60,28 @@ angular.module('slenderpmApp.task.service')
         return deferred.promise;
     };
 
+    this.MarkTaskComplete = function (taskid, uri) {
+        //Enables callback when http request is done       
+        var deferred = $q.defer();
+        $http({
+            method: 'POST',
+            url: uri.concat('tasks/markAsComplete'),
+            data: 'id=' + taskid,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;' }
+        })
+        .success(function (data, status, headers, config) {
+            // this callback will be called asynchronously
+            // when the response is available   
+            deferred.resolve(data);
+        }).
+        error(function (data, status, headers, config) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            deferred.resolve(data);
+        });
+        return deferred.promise;
+    };
+
     this.GetSubTasks = function (taskid) {
         return '[{"id":"1", "title":"Task1"},{"id":"2", "title":"Task2"},{"id":"3", "title":"Task3"}]';
     };

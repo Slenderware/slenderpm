@@ -45,6 +45,21 @@ angular.module('slenderpmApp.task.controller')
         });
     };
 
+    $scope.markTaskAsComplete = function (taskName) {
+        console.log(taskName);
+        if (taskName === $scope.currTask.name) {
+            TasksService.MarkTaskComplete($scope.currTask.id, $scope.RESTURI).then(function (result) {
+                if (result.success) {
+                    $('#markAsCompleteTaskModal').modal('hide');
+                    $scope.result = undefined;                    
+                }
+            });
+        } else {
+            $scope.message = 'This task name does not match the task that must be deleted!';
+            $scope.success = false;
+        }
+    };
+
     $scope.$on('current-project-init', function (event, args) {
         $scope.getTasks();
     });

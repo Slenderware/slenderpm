@@ -11,9 +11,9 @@
         <div class="panel-group" id="accordion">
             <div ng-repeat="task in tasks" class="taskList">
               <div class="panel panel-default">
-                <div ng-click="setCurrentTask(task)" ng-class="task.id === currTask.id ?  'panel-heading active' : 'panel-heading'"><!-- data-parent="#accordion" data-toggle="collapse" data-target="#collapse{{task.id}}"-->                                             
+                <div ng-click="setCurrentTask(task)" ng-class="task.id === currTask.id ?  'panel-heading active' : 'panel-heading'" ><!-- data-parent="#accordion" data-toggle="collapse" data-target="#collapse{{task.id}}"-->                                             
                     {{task.name}} 
-                    <label class="switch" style="float:right;" ng-show="user.roleId == 1"><input type="checkbox"><i></i></label>                   
+                    <label class="switch" style="float:right;" ng-show="user.roleId == 1"><input type="checkbox" data-toggle="modal" data-target="#markAsCompleteTaskModal"><i></i></label>                   
                 </div>
                 <div id="collapse{{task.id}}" class="panel-collapse collapse">
                   <div class="panel-body">
@@ -50,6 +50,29 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <input type="submit" class="btn btn-primary" value="Add task" ng-click="addTask()"></input>
+      </div>
+    </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Mark task as complete-->
+<div class="modal fade" id="markAsCompleteTaskModal" ng-controller="TasksCtrl">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <form>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Mark tas {{currTask.name}} as completed</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-info" role="alert">Danger zone! Please enter the name of the task that you would like to delete.</div>
+        <input type="text" class="form-control" placeholder="Task name" ng-model="taskName"></input> 
+        <div ng-class="success ? 'alert alert-success' : 'alert alert-danger'" ng-hide="success === undefined" style="margin-top:0.5em;">{{message}}</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <input type="submit" class="btn btn-primary" value="Mark as Complete" ng-click="markTaskAsComplete(taskName)"></input>
       </div>
     </form>
     </div><!-- /.modal-content -->
