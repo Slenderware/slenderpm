@@ -10,10 +10,16 @@ Part of the Slenderware Management System is to track a project every step of th
 This provides managers with the ability to quickly and easily report the status of projects and ascertain whether they are on the right track or if their not. 
 Projects fail due to lack of information, here the Slenderware Project Management software includes functions to add details to a project like 'parts' that need to be built.
 
+Documentation
+-------------
+For the full documentation <a href="https://drive.google.com/open?id=0B1qbAtIikoTfbGJocW43N2lLNjA&authuser=0">click here</a>
+
 Demo
 -----------
 
 <a href="http://slenderware.github.io/slenderpm/">Click here</a> to see the demo. Use username: admin. password: admin as login credentials.
+
+
 
 Dependencies
 -----------
